@@ -1,10 +1,73 @@
 {% extends "base.html" %}
 
 
-{% block title %}
-
-{% endblock %}
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Pets {% endblock %}
 
 {% block content %}
-<h1>Pet Management</h1>
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-md-10 offset-md-1">
+            <div class="col-md-10">
+                <div class="card ">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h4> Pets </h4>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-info" data-toggle="modal"
+                                            data-target="#pet_form">
+                                        Add New Pet
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% if pet_list.__len__() > 0 %}
+                            {% for pet in pet_list %}
+                                <li class="list-group-item">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <h5> {{ pet.name }}</h5>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-info" data-toggle="modal"
+                                                        data-target="#pet_form" data-name="{{ pet.name }}"
+                                                        data-gender="{{ pet.gender }}">
+                                                    Update
+                                                </button>
+                                                <a class="btn btn-danger"
+                                                   href="{{ url_for("homeRoute.pet_delete",pet_id=pet.id) }}">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li class="list-group-item">No Pet under this accound.</li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% include "home/_pet_modal.html" with context %}
+    <script>
+        $('#pet_form').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var name = button.data('name');
+            var gender = button.data('gender');
+            console.log(gender);
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this);
+            modal.find('.modal-title').text(name);
+            modal.find('#id_name').val(name);
+            modal.find('#id_gender').val(gender);
+        })
+    </script>
 {% endblock %}

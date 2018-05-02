@@ -1,6 +1,6 @@
-
 from datetime import datetime
 from app.manage import db
+
 
 class Address(db.Model):
     __tablename__ = 'address'
@@ -8,12 +8,11 @@ class Address(db.Model):
     city = db.Column(db.String(20))
     street = db.Column(db.String(50))
     post_code = db.Column(db.INTEGER)
-    
-    def __init__(self,city,street,post_code):
+
+    def __init__(self, city, street, post_code):
         self.city = city
         self.street = street
         self.post_code = post_code
-
 
 
 class User(db.Model):
@@ -23,9 +22,11 @@ class User(db.Model):
     last_name = db.Column(db.String(20))
     email = db.Column(db.String(50))
     password = db.Column(db.String(50))
-    dob = db.Column(db.DATETIME,default=datetime.now)
+    dob = db.Column(db.DATETIME, default=datetime.now)
     gender = db.Column(db.CHAR(1))
     phone = db.Column(db.String(10))
+    home_number = db.Column(db.String(10))
+    work_number = db.Column(db.String(10))
     address_id = db.Column(db.Integer, db.ForeignKey('address.id'),
                            nullable=False)
     address = db.relationship('Address',
@@ -34,21 +35,24 @@ class User(db.Model):
     active = db.Column(db.BOOLEAN)
     admin = db.Column(db.BOOLEAN)
 
-    register_date = db.Column(db.DATETIME,default=datetime.now)
+    register_date = db.Column(db.DATETIME, default=datetime.now)
 
-    def __init__(self,email, password ,first_name="first", last_name="last", dob=None,gender=None,phone="000000",address=None,active=True,admin=False,register_date=None):
-        self.frist_name=first_name
-        self.last_name=last_name
-        self.email=email
-        self.password=password
-        self.dob=dob
-        self.gender=gender
-        self.phone=phone
-        self.address=address
+    def __init__(self, email, password, first_name="first", last_name="last", dob=None, gender=None, phone="000000",home_number="000000",work_number="000000",
+                 address=None, active=True, admin=False, register_date=None):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.password = password
+        self.dob = dob
+        self.gender = gender
+        self.phone = phone
+        self.home_number = home_number
+        self.work_number = work_number
+        self.address = address
         self.active = active
         self.admin = admin
-        self.register_date=register_date
-        
+        self.register_date = register_date
+
     def is_authenticated(self):
         return True
 
@@ -65,27 +69,18 @@ class User(db.Model):
         return self.admin
 
     def __repr__(self):
-        return '<User %r,%r>' % (self.first_name ,self.last_name)
+        return '<User %r,%r>' % (self.first_name, self.last_name)
 
 
 class Pet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'),
-                           nullable=False)
+                         nullable=False)
     owner = db.relationship('User',
-                              backref=db.backref('pets', lazy=True),foreign_keys=[owner_id])
+                            backref=db.backref('pets', lazy=True), foreign_keys=[owner_id])
 
     name = db.Column(db.String(20))
+    breed = db.Column(db.String(20))
     gender = db.Column(db.CHAR(1))
+    dob = db.Column(db.DATETIME, default=datetime.now)
 
-#
-# class Appointment(models.Model):
-#     question = db.ForeignKey(User, on_delete=models.CASCADE)
-#     choice_text = db.VARCHAR(max_length=200)
-#     votes = models.IntegerField(default=0)
-#
-#
-# class TimeSlot(models.Model):
-#     question = db.ForeignKey(User, on_delete=models.CASCADE)
-#     choice_text = db.VARCHAR(max_length=200)
-#     votes = models.IntegerField(default=0)

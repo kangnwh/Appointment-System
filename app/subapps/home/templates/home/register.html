@@ -2,10 +2,14 @@
 
 {% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Register {% endblock %}
 
 {% block content %}
-
+<div class="row" style="padding-top: 50px;">
+    <div class="col-md-10 offset-md-1">
     {% include "forms/register_form.html" with context %}
+    </div>
+</div>
 
 {% endblock %}
+

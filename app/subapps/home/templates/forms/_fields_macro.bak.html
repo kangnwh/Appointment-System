@@ -14,14 +14,17 @@
 
 
 
-{% macro render_string(field, value='', type='text', readonly=None,class='col-sm-8') -%}
-
-    <div class="{{ class }}">
-        <input type="{{ type }}" placeholder="{{ field.name }}" class="form-control" {% if readonly %}
-               readonly {% endif %} id="id_{{ field.name }}"
-               name="{{ field.name }}" value="{{ value|e }}">
-    </div>
+{% macro render_string(field, value='', type='text', readonly=None) -%}
     {{ show_errors(field) }}
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend ">
+                <span class="input-group-text">{{ field.label }}</span>
+            </div>
+            <input type="{{ type }}" placeholder="{{ field.name }}" class="form-control" {% if readonly %} readonly {% endif %} id="id_{{ field.name }}"
+                   name="{{ field.name }}" value="{{ value|e }}">
+        </div>
+    </div>
 {% endmacro %}
 
 
@@ -38,10 +41,13 @@
 {%- endmacro %}
 
 
-{% macro render_select(field,value='',class='col-sm-8') -%}
-
-    <div class="{{ class }}">
-        <select class="custom-select" id="id_{{ field.name }}" name="{{ field.name }}">
+{% macro render_select(field,value='') -%}
+    {{ show_errors(field) }}
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">{{ field.name }}</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" name="{{ field.name }}">
             <option selected>Choose...</option>
             {% for option in field.choices %}
 
@@ -51,13 +57,15 @@
 
         </select>
     </div>
-    {{ show_errors(field) }}
 {% endmacro %}
 
 
-{% macro render_date(field,value="",class='col-sm-8') -%}
+{% macro render_date(field,value="") -%}
     {{ show_errors(field) }}
-    <div class="{{ class }}">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">{{ field.name }}</span>
+        </div>
         <input type="text" value="{{ value }}" readonly class=" form-control {{ field.name }}"
                name="{{ field.name }}" id="id_{{ field.name }}" data-date-format="yyyy-mm-dd ">
         <script type="text/javascript">

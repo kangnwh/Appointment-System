@@ -1,13 +1,13 @@
 {% import "forms/_fields_macro.html" as form_macro %}
 
 
-<form action="{{ url_for('homeRoute.login') }}" method="post">
+<form action="{{ url_for('homeRoute.pet_update') }}" method="post">
     {{ form.csrf_token }}
-    <div class="card">
-        <div class="card-header">
-            <h4>Login</h4>
-        </div>
-        <div class="card-body">
+{#    <div class="card">#}
+{#        <div class="card-header">#}
+{#            <h4>{{ pet.name }}</h4>#}
+{#        </div>#}
+{#        <div class="card-body">#}
             <div class="form-group row">
                 <label for="input_{{ form.email.name }}"
                        class="col-sm-3 col-form-label">{{ form.email.label }} </label>
@@ -18,7 +18,7 @@
                        class="col-sm-3 col-form-label">{{ form.password.label }} </label>
                 {{ form_macro.render_string(form.password,type='password') }}
             </div>
-        </div>
+{#        </div>#}
         <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+{#    </div>#}
 </form>

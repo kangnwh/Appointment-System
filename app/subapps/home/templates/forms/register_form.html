@@ -1,20 +1,94 @@
 {% import "forms/_fields_macro.html" as form_macro %}
 
 
-<div class="row" style="padding-top: 50px;">
-    <div class="col-md-4 offset-md-4">
+
         <form action="{{ url_for('homeRoute.register') }}" method="post">
             {{ form.csrf_token }}
-            <h3>Person Info:</h3>
-            {{ form_macro.render_string(form.email) }}
-            {{ form_macro.render_string(form.password,type='password') }}
-            {{ form_macro.render_string(form.confirm,type='password') }}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Person Info</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="input_{{ form.last_name.name }}" class="col-sm-4 col-form-label">{{ form.last_name.label }} </label>
+                                {{ form_macro.render_string(form.last_name) }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="input_{{ form.first_name.name }}"
+                                       class="col-sm-4 col-form-label">{{ form.first_name.label }} </label>
+                                {{ form_macro.render_string(form.first_name) }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="input_{{ form.email.name }}"
+                                       class="col-sm-4 col-form-label">{{ form.email.label }} </label>
+                                {{ form_macro.render_string(form.email,type='email') }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="input_{{ form.phone.name }}"
+                                       class="col-sm-4 col-form-label">{{ form.phone.label }} </label>
+                                {{ form_macro.render_string(form.phone) }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="input_{{ form.home_number.name }}"
+                                       class="col-sm-4 col-form-label">{{ form.home_number.label }} </label>
+                                {{ form_macro.render_string(form.home_number) }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="input_{{ form.work_number.name }}"
+                                       class="col-sm-4 col-form-label">{{ form.work_number.label }} </label>
+                                {{ form_macro.render_string(form.work_number) }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="input_{{ form.dob.name }}"
+                                       class="col-sm-4 col-form-label">{{ form.dob.label }} </label>
+                                {{ form_macro.render_date(form.dob) }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="input_{{ form.gender.name }}"
+                                       class="col-sm-4 col-form-label">{{ form.gender.label }} </label>
+                                {{ form_macro.render_select(form.gender) }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="input_{{ form.password.name }}"
+                                       class="col-sm-4 col-form-label">{{ form.password.label }} </label>
+                                {{ form_macro.render_string(form.password,type='password') }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="input_{{ form.confirm.name }}"
+                                       class="col-sm-4 col-form-label">{{ form.confirm.label }} </label>
+                                {{ form_macro.render_string(form.confirm,type='password') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <h3>Address Info:</h3>
-            {{ form_macro.render_string(form.city) }}
-            {{ form_macro.render_string(form.street)}}
-            {{ form_macro.render_string(form.post_code) }}
-            <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Address Info</h4>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="form-group row">
+                                <label for="input_{{ form.city.name }}"
+                                       class="col-sm-3 col-form-label"> {{ form.city.name }} </label>
+                                {{ form_macro.render_string(form.city) }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="input_{{ form.street.name }}"
+                                       class="col-sm-3 col-form-label">{{ form.street.name }}</label>
+                                {{ form_macro.render_string(form.street) }}
+                            </div>
+                            <div class="form-group row">
+                                <label for="input_{{ form.post_code.name }}"
+                                       class="col-sm-3 col-form-label">{{ form.post_code.name }}</label>
+                                {{ form_macro.render_string(form.post_code) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
         </form>
-    </div>
-</div>
