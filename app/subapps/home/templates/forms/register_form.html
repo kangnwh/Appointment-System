@@ -1,0 +1,20 @@
+{% import "forms/_fields_macro.html" as form_macro %}
+
+
+<div class="row" style="padding-top: 50px;">
+    <div class="col-md-4 offset-md-4">
+        <form action="{{ url_for('homeRoute.register') }}" method="post">
+            {{ form.csrf_token }}
+            <h3>Person Info:</h3>
+            {{ form_macro.render_string(form.email) }}
+            {{ form_macro.render_string(form.password,type='password') }}
+            {{ form_macro.render_string(form.confirm,type='password') }}
+
+            <h3>Address Info:</h3>
+            {{ form_macro.render_string(form.city) }}
+            {{ form_macro.render_string(form.street)}}
+            {{ form_macro.render_string(form.post_code) }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

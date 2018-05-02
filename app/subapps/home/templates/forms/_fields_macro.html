@@ -1,0 +1,42 @@
+{% macro show_errors(field) -%}
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{ error }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+
+    {% endif %}
+{%- endmacro %}
+
+
+
+{% macro render_string(field, value='', type='text') -%}
+    {{ show_errors(field) }}
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend ">
+                <span class="input-group-text">{{ field.label }}</span>
+            </div>
+            <input type="{{ type }}" placeholder="{{ field.name }}" class="form-control" id="id_{{ field.name }}"
+                   name="{{ field.name }}" value="{{ value|e }}">
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro textarea(name, value='', type='text', rows=10, cols=40) -%}
+    {{ show_errors(field) }}
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">{{ label }}</span>
+            </div>
+            <textarea name="{{ name }}" rows="{{ rows }}" cols="{{ cols }}">{{ value|e }}</textarea>
+        </div>
+    </div>
+{%- endmacro %}
+

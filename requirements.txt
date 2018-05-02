@@ -1,0 +1,14 @@
+xlwt
+openpyxl
+numpy
+pandas
+sqlalchemy
+pymssql
+xlrd
+flask
+flask-wtf
+flask-bootstrap
+tushare
+wordcloud
+Pillow
+jieba
