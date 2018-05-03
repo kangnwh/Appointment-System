@@ -237,9 +237,10 @@ def register():
             session = Session()
             session.add(address)
             session.add(user)
-            login_user(user, remember=True)
             session.commit()
+            user = session.query(User).filter(User.email == email).first()
             session.close()
+            login_user(user, remember=True)
         except Exception  as e:
             flash("Register Failed, check again later", "danger")
             flash(e)

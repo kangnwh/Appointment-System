@@ -4,7 +4,6 @@
     <list default="true" id="94fe0d93-44d5-41d7-91c5-12b343ba694f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.db" afterPath="$PROJECT_DIR$/app/app.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/forms.py" afterPath="$PROJECT_DIR$/app/subapps/home/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/routing.py" afterPath="$PROJECT_DIR$/app/subapps/home/routing.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -39,8 +38,8 @@
           <file leaf-file-name="routing.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/subapps/home/routing.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="185">
-                  <caret line="239" column="43" lean-forward="false" selection-start-line="239" selection-start-column="43" selection-end-line="239" selection-end-column="43" />
+                <state relative-caret-position="230">
+                  <caret line="242" column="43" lean-forward="true" selection-start-line="242" selection-start-column="43" selection-end-line="242" selection-end-column="43" />
                   <folding>
                     <element signature="e#24#48#0" expanded="true" />
                     <element signature="e#752#1519#0" expanded="false" />
@@ -839,7 +838,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525312651746</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix register bug - login_user()">
+      <created>1525313508547</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1525313508547</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -850,7 +856,7 @@
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="100" y="100" width="1720" height="880" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -907,7 +913,8 @@
     <MESSAGE value="user profile update" />
     <MESSAGE value="pet management and user management" />
     <MESSAGE value="pet update &amp; delete &amp; add" />
-    <option name="LAST_COMMIT_MESSAGE" value="pet update &amp; delete &amp; add" />
+    <MESSAGE value="fix register bug - login_user()" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix register bug - login_user()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1058,7 +1065,7 @@
         <state relative-caret-position="90">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="48" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="false" />
             <marker date="1525308091473" expanded="true" signature="205:858" ph="..." />
           </folding>
         </state>
@@ -1251,8 +1258,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/subapps/home/routing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="239" column="43" lean-forward="false" selection-start-line="239" selection-start-column="43" selection-end-line="239" selection-end-column="43" />
+        <state relative-caret-position="230">
+          <caret line="242" column="43" lean-forward="true" selection-start-line="242" selection-start-column="43" selection-end-line="242" selection-end-column="43" />
           <folding>
             <element signature="e#24#48#0" expanded="true" />
             <element signature="e#752#1519#0" expanded="false" />
