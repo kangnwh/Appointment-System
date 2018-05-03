@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94fe0d93-44d5-41d7-91c5-12b343ba694f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/subapps/util/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.db" afterPath="$PROJECT_DIR$/app/app.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/manage.py" afterPath="$PROJECT_DIR$/app/manage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/forms.py" afterPath="$PROJECT_DIR$/app/subapps/home/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/routing.py" afterPath="$PROJECT_DIR$/app/subapps/home/routing.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/forms/login_form.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/forms/login_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/forms/user_profile.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/forms/user_profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/home/_pet_modal.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/home/_pet_modal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/home/pet.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/home/pet.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/home/index.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/home/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path=".idea/" />
@@ -53,7 +44,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="routing.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="routing.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/subapps/home/routing.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="279">
@@ -64,6 +55,16 @@
                     <element signature="e#4782#6860#0" expanded="false" />
                     <element signature="e#6938#8496#0" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/home/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -300,7 +301,6 @@
         <option value="$PROJECT_DIR$/app/db_info/__init__.py" />
         <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/app/subapps/home/templates/forms/fields_macro.html" />
-        <option value="$PROJECT_DIR$/app/subapps/home/templates/home/index.html" />
         <option value="$PROJECT_DIR$/app/config.py" />
         <option value="$PROJECT_DIR$/app/subapps/home/templates/home/appointment.html" />
         <option value="$PROJECT_DIR$/app/subapps/home/templates/home/register.html" />
@@ -325,6 +325,7 @@
         <option value="$PROJECT_DIR$/app/subapps/util/__init__.py" />
         <option value="$PROJECT_DIR$/app/subapps/home/templates/forms/user_profile.html" />
         <option value="$PROJECT_DIR$/app/subapps/home/routing.py" />
+        <option value="$PROJECT_DIR$/app/subapps/home/templates/home/index.html" />
       </list>
     </option>
   </component>
@@ -886,7 +887,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525308407052</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="pet update &amp; delete &amp; add">
+      <created>1525312429200</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1525312429200</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -897,7 +905,7 @@
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="100" y="100" width="1720" height="880" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32970297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -953,7 +961,8 @@
     <MESSAGE value="using base dir" />
     <MESSAGE value="user profile update" />
     <MESSAGE value="pet management and user management" />
-    <option name="LAST_COMMIT_MESSAGE" value="pet management and user management" />
+    <MESSAGE value="pet update &amp; delete &amp; add" />
+    <option name="LAST_COMMIT_MESSAGE" value="pet update &amp; delete &amp; add" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1030,14 +1039,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/home/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="69" />
           <folding />
         </state>
       </provider>
@@ -1256,6 +1257,14 @@
             <element signature="e#4782#6860#0" expanded="false" />
             <element signature="e#6938#8496#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/home/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
