@@ -1,12 +1,16 @@
-{% extends "base.html" %}
+{% extends "home/management_base.html" %}
 
 
-{% block title %} {{ config.DEFAULT_APP_NAME }} - Pets {% endblock %}
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Pet Management {% endblock %}
 
-{% block content %}
-    <div class="row" style="padding-top: 50px;">
-        <div class="col-md-10 offset-md-1">
-            <div class="col-md-10">
+{#{% block main_content %}#}
+{#    {% include "forms/user_profile.html" with context %}#}
+{#{% endblock %}#}
+
+{% block main_content %}
+{#    <div class="row" style="padding-top: 50px;">#}
+{#        <div class="col-md-10 ">#}
+{#            <div class="col-md-10">#}
                 <div class="card ">
                     <div class="card-header">
                         <div class="row">
@@ -29,14 +33,27 @@
                             {% for pet in pet_list %}
                                 <li class="list-group-item">
                                     <div class="row">
-                                        <div class="col-md-9">
-                                            <h5> {{ pet.name }}</h5>
+                                        <div class="col-md-2">
+                                            {{ pet.name }}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {{ pet.breed }}
+                                        </div>
+                                        <div class="col-md-2">
+                                            {{ pet.gender }}
+                                        </div>
+                                        <div class="col-md-3">
+                                            {{ pet.dob }}
                                         </div>
                                         <div class="col-md-3">
                                             <div class="btn-group" role="group">
                                                 <button type="button" class="btn btn-info" data-toggle="modal"
-                                                        data-target="#pet_form" data-name="{{ pet.name }}"
-                                                        data-gender="{{ pet.gender }}">
+                                                        data-target="#pet_form"
+                                                        data-id="{{ pet.id }}"
+                                                        data-name="{{ pet.name }}"
+                                                        data-breed="{{ pet.breed }}"
+                                                        data-gender="{{ pet.gender }}"
+                                                        data-dob="{{ pet.dob }}">
                                                     Update
                                                 </button>
                                                 <a class="btn btn-danger"
@@ -52,22 +69,29 @@
                     </ul>
                 </div>
 
-            </div>
-        </div>
-    </div>
-    {% include "home/_pet_modal.html" with context %}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+    {% include "home/_pet_modal.html" %}
     <script>
         $('#pet_form').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
+            var id = button.data('id');
             var name = button.data('name');
+            var dob = button.data('dob');
+            var breed = button.data('breed');
             var gender = button.data('gender');
-            console.log(gender);
             // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
             // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var modal = $(this);
-            modal.find('.modal-title').text(name);
-            modal.find('#id_name').val(name);
-            modal.find('#id_gender').val(gender);
+            if (name) {
+                var modal = $(this);
+                modal.find('.modal-title').text(name);
+                modal.find('#id_id').val(id);
+                modal.find('#id_name').val(name);
+                modal.find('#id_breed').val(breed);
+                modal.find('#id_dob').val(dob);
+                modal.find('#id_gender').val(gender);
+            }
         })
     </script>
 {% endblock %}

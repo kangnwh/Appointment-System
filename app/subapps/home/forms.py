@@ -52,7 +52,10 @@ class UserProfileForm(Form):
 
 
 class PetForm(Form):
+    id = IntegerField("Pet ID", validators = [DataRequired()])
     name = StringField('Name', validators = [DataRequired()])
+    breed = StringField('Breed', validators = [DataRequired()])
     gender = SelectField('Gender', validators=[DataRequired()], choices=[('M', 'Male'), ('F', 'Female')])
+    dob = DateField('Date Of Birth', validators=[DataRequired()])
     # remember_me = BooleanField('remember_me', default = False)
 

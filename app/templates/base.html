@@ -1,8 +1,7 @@
 <head>
     <title> {% block title %}{{ title }}{% endblock %}</title>
     <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
-    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='bootstrap-datetimepicker.min.css') }}">
-<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='bootstrap-datepicker3.min.css') }}">
+    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='bootstrap-datepicker3.min.css') }}">
 
 
 
@@ -25,13 +24,13 @@
                     <a class="nav-link {% if current_page == 'appointment' %}btn btn-success{% endif %}"
                        href="{{ url_for('homeRoute.appointment') }}">Appointment</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if current_page == 'pet' %}btn btn-success{% endif %}"
-                       href="{{ url_for('homeRoute.pet') }}">Pet Management</a>
-                </li>
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link {% if current_page == 'pet' %}btn btn-success{% endif %}"#}
+{#                       href="{{ url_for('homeRoute.pet') }}">Pet Management</a>#}
+{#                </li>#}
                 <li class="nav-item">
                     <a class="nav-link {% if current_page == 'user' %}btn btn-success{% endif %}"
-                       href="{{ url_for('homeRoute.user_update') }}">User Info Management</a>
+                       href="{{ url_for('homeRoute.user_update') }}">Management</a>
                 </li>
             </ul>
             {% if current_user.is_authenticated %}

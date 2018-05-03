@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block title %} {{ config.DEFAULT_APP_NAME }} - User Profile {% endblock %}
+
+{% block content %}
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-md-3">
+            <ul class="nav flex-column nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link {% if user_tab == "user" %} active {% endif %}" href="{{ url_for("homeRoute.user_update") }}">User Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if user_tab == "pet" %} active {% endif %}" href="{{ url_for("homeRoute.pet") }}">Pets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if user_tab == "card" %} active {% endif %}" href="#">Cards</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            {% block main_content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

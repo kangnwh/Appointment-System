@@ -60,12 +60,42 @@ def pet():
     session = Session()
     pet_list = session.query(Pet).filter(Pet.owner_id == current_user.id).all()
     form = PetForm()
-    return render_template('home/pet.html', form=form, current_page="pet",pet_list = pet_list)
+    return render_template('home/pet.html', form=form, current_page="user",pet_list = pet_list,user_tab="pet")
 
-@homeRoute.route('/pet_update')
+
+@homeRoute.route('/pet_update', methods=['POST'])
 @login_required
 def pet_update():
-    pass
+    form = PetForm()
+    if form.validate_on_submit():
+        id = form.id.data
+        name = form.name.data
+        breed = form.breed.data
+        gender = form.gender.data
+        dob = form.dob.data
+
+        try:
+            session = Session()
+            this_pet = session.query(Pet).filter(Pet.id == id, Pet.owner_id == current_user.id)
+            this_pet.update(
+                {
+                    'name': name,
+                    'breed': breed,
+                    'gender': gender,
+                    'dob': dob,
+                },
+                synchronize_session='evaluate'
+            )
+            session.commit()
+
+        except Exception  as e:
+            flash("Update pet information failed", "danger")
+            flash(e)
+            redirect(url_for("homeRoute.pet"))
+
+        flash("Update pet information Successfully.", "success")
+        return redirect(url_for("homeRoute.pet"))
+    return redirect(url_for("homeRoute.pet"))
 
 @homeRoute.route('/pet_delete')
 @login_required
@@ -122,8 +152,7 @@ def user_update():
                 }
                 , synchronize_session='evaluate'
             )
-            # session.add(address)
-            # session.add(user)
+
             session.commit()
 
         except Exception  as e:
@@ -134,7 +163,7 @@ def user_update():
         flash("Update Successfully.","success")
         next = request.args.get('next')
         return redirect(next or url_for('homeRoute.user_update'))
-    return render_template('home/user.html', form=form, current_page="user")
+    return render_template('home/user.html', form=form, current_page="user",user_tab="user")
 
 
 @homeRoute.route('/register', methods=['GET', 'POST'])

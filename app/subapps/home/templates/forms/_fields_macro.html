@@ -14,11 +14,13 @@
 
 
 
-{% macro render_string(field, value='', type='text', readonly=None,class='col-sm-8') -%}
+{% macro render_string(field, value='', type='text', readonly=None,class='col-sm-8',required=true) -%}
 
     <div class="{{ class }}">
-        <input type="{{ type }}" placeholder="{{ field.name }}" class="form-control" {% if readonly %}
-               readonly {% endif %} id="id_{{ field.name }}"
+        <input type="{{ type }}" placeholder="{{ field.name }}" class="form-control"
+                {% if readonly %} readonly {% endif %}
+               {% if required %} required {% endif %}
+               id="id_{{ field.name }}"
                name="{{ field.name }}" value="{{ value|e }}">
     </div>
     {{ show_errors(field) }}
@@ -62,7 +64,7 @@
                name="{{ field.name }}" id="id_{{ field.name }}" data-date-format="yyyy-mm-dd ">
         <script type="text/javascript">
             $(function () {
-                $(".{{ field.name }}").datepicker({format: 'yyyy-mm-dd', autoclose: true});
+                $("#id_{{ field.name }}").datepicker({format: 'yyyy-mm-dd', autoclose: true});
             });
         </script>
     </div>

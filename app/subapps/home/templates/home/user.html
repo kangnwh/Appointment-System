@@ -1,16 +1,8 @@
-{% extends "base.html" %}
+{% extends "home/management_base.html" %}
 
 
 {% block title %} {{ config.DEFAULT_APP_NAME }} - User Profile {% endblock %}
 
-{% block content %}
-    <div class="row" style="padding-top: 50px;">
-        <div class="col-md-10 offset-md-1">
-            {% include "forms/user_profile.html" with context %}
-        </div>
-    </div>
-
-{% endblock %}
-{% block after_js %}
-
+{% block main_content %}
+    {% include "forms/user_profile.html" with context %}
 {% endblock %}

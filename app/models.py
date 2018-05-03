@@ -22,7 +22,7 @@ class User(db.Model):
     last_name = db.Column(db.String(20))
     email = db.Column(db.String(50))
     password = db.Column(db.String(50))
-    dob = db.Column(db.DATETIME, default=datetime.now)
+    dob = db.Column(db.DATE, default=datetime.now)
     gender = db.Column(db.CHAR(1))
     phone = db.Column(db.String(10))
     home_number = db.Column(db.String(10))
@@ -82,5 +82,12 @@ class Pet(db.Model):
     name = db.Column(db.String(20))
     breed = db.Column(db.String(20))
     gender = db.Column(db.CHAR(1))
-    dob = db.Column(db.DATETIME, default=datetime.now)
+    dob = db.Column(db.DATE, default=datetime.now)
+
+    def __init__(self, owner,name,breed,gender,dob):
+        self.owner = owner
+        self.name = name
+        self.breed = breed
+        self.gender = gender
+        self.dob = dob
 
