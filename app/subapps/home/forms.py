@@ -13,6 +13,7 @@ class LoginForm(Form):
 def unique_email(form, field):
     session = Session()
     email = session.query(User).filter(User.email == field.data).first()
+    session.close()
     if email:
         raise ValidationError('%s[%s] is already registered' % (field.name,field.data))
 

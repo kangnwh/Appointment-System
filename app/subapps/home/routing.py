@@ -226,8 +226,8 @@ def register():
         phone = form.phone.data
         home_numaber = form.home_number.data
         work_number = form.work_number.data
-        md5 = hashlib.md5()
-        md5.update(form.password.data.encode('utf-8'))  # TODO encrypt password
+        # md5 = hashlib.md5()
+        # md5.update(form.password.data.encode('utf-8'))  # TODO encrypt password
         # password = md5.hexdigest()
         password = form.password.data
         user = User(email=email, password=password, first_name=first_name, last_name=last_name, dob=dob, gender=gender,
@@ -237,6 +237,7 @@ def register():
             session = Session()
             session.add(address)
             session.add(user)
+            login_user(user, remember=True)
             session.commit()
             session.close()
         except Exception  as e:
@@ -244,7 +245,7 @@ def register():
             flash(e)
             return render_template('home/register.html', form=form)
 
-        login_user(user, remember=True)
+
         flash("Register Successfully.","success")
         next = request.args.get('next')
         return redirect(next or url_for('homeRoute.index'))
