@@ -12,8 +12,8 @@
             <div class="card-body">
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
-                        <label for="input_{{ form.last_name.name }}">{{ form.last_name.label }} </label>
-                        {{ form_macro.render_string(form.last_name,class="",value=current_user.last_name) }}
+                        <label for="input_{{ form.first_name.name }}">{{ form.first_name.label }} </label>
+                        {{ form_macro.render_string(form.first_name,class="",value=current_user.first_name) }}
                         <div class="valid-tooltip">
                             Looks good!
                         </div>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.gender.name }}">{{ form.gender.label }} </label>
-                        {{ form_macro.render_string(form.gender,class="",value=current_user.gender) }}
+                        {{ form_macro.render_select(form.gender,class="",value=current_user.gender) }}
                         <div class="valid-tooltip">
                             Looks good!
                         </div>

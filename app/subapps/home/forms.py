@@ -52,7 +52,7 @@ class UserProfileForm(Form):
 
 
 class PetForm(Form):
-    id = IntegerField("Pet ID", validators = [DataRequired()])
+    id = IntegerField("Pet ID")
     name = StringField('Name', validators = [DataRequired()])
     breed = StringField('Breed', validators = [DataRequired()])
     gender = SelectField('Gender', validators=[DataRequired()], choices=[('M', 'Male'), ('F', 'Female')])

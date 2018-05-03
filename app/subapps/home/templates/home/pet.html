@@ -8,70 +8,69 @@
 {#{% endblock %}#}
 
 {% block main_content %}
-{#    <div class="row" style="padding-top: 50px;">#}
-{#        <div class="col-md-10 ">#}
-{#            <div class="col-md-10">#}
-                <div class="card ">
-                    <div class="card-header">
+    {#    <div class="row" style="padding-top: 50px;">#}
+    {#        <div class="col-md-10 ">#}
+    {#            <div class="col-md-10">#}
+    <div class="card ">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-9">
+                    <h4> Pets </h4>
+                </div>
+                <div class="col-md-3">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                data-target="#pet_form"
+                                data-action="Add">
+                            Add New Pet
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <ul class="list-group list-group-flush">
+            {% if pet_list.__len__() > 0 %}
+                {% for pet in pet_list %}
+                    <li class="list-group-item">
                         <div class="row">
-                            <div class="col-md-9">
-                                <h4> Pets </h4>
+                            <div class="col-md-2">
+                                {{ pet.name }}
+                            </div>
+                            <div class="col-md-2">
+                                {{ pet.breed }}
+                            </div>
+                            <div class="col-md-2">
+                                {{ pet.gender }}
+                            </div>
+                            <div class="col-md-3">
+                                {{ pet.dob }}
                             </div>
                             <div class="col-md-3">
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-info" data-toggle="modal"
-                                            data-target="#pet_form">
-                                        Add New Pet
+                                            data-target="#pet_form"
+                                            data-id="{{ pet.id }}"
+                                            data-name="{{ pet.name }}"
+                                            data-breed="{{ pet.breed }}"
+                                            data-gender="{{ pet.gender }}"
+                                            data-dob="{{ pet.dob }}"
+                                            data-action="Update">
+                                        Update
                                     </button>
+                                    <a class="btn btn-danger"
+                                       href="{{ url_for("homeRoute.pet_delete",pet_id=pet.id) }}">Delete</a>
                                 </div>
                             </div>
                         </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="list-group-item">No Pet under this accound.</li>
+            {% endif %}
+        </ul>
+    </div>
 
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        {% if pet_list.__len__() > 0 %}
-                            {% for pet in pet_list %}
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            {{ pet.name }}
-                                        </div>
-                                        <div class="col-md-2">
-                                            {{ pet.breed }}
-                                        </div>
-                                        <div class="col-md-2">
-                                            {{ pet.gender }}
-                                        </div>
-                                        <div class="col-md-3">
-                                            {{ pet.dob }}
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-info" data-toggle="modal"
-                                                        data-target="#pet_form"
-                                                        data-id="{{ pet.id }}"
-                                                        data-name="{{ pet.name }}"
-                                                        data-breed="{{ pet.breed }}"
-                                                        data-gender="{{ pet.gender }}"
-                                                        data-dob="{{ pet.dob }}">
-                                                    Update
-                                                </button>
-                                                <a class="btn btn-danger"
-                                                   href="{{ url_for("homeRoute.pet_delete",pet_id=pet.id) }}">Delete</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            {% endfor %}
-                        {% else %}
-                            <li class="list-group-item">No Pet under this accound.</li>
-                        {% endif %}
-                    </ul>
-                </div>
-
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
     {% include "home/_pet_modal.html" %}
     <script>
         $('#pet_form').on('show.bs.modal', function (event) {
@@ -81,16 +80,25 @@
             var dob = button.data('dob');
             var breed = button.data('breed');
             var gender = button.data('gender');
-            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            if (name) {
-                var modal = $(this);
+            var action = button.data('action');
+            var modal = $(this);
+
+            if (action) {
                 modal.find('.modal-title').text(name);
                 modal.find('#id_id').val(id);
                 modal.find('#id_name').val(name);
                 modal.find('#id_breed').val(breed);
                 modal.find('#id_dob').val(dob);
                 modal.find('#id_gender').val(gender);
+                if (action == "Update") {
+                    modal.find('#modal-submit').html(action);
+                    modal.find('#pet_action').attr('action', "{{ url_for("homeRoute.pet_update") }}");
+                } else if (action == "Add") {
+                    modal.find('#id_id').val(0);
+                    modal.find('#modal-submit').html(action);
+                    modal.find('#pet_action').attr('action', "{{ url_for("homeRoute.pet_add") }}");
+                }
+
             }
         })
     </script>

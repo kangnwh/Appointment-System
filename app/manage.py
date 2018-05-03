@@ -2,6 +2,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import subqueryload
 
 
 
@@ -36,4 +37,8 @@ def registerModuled():
 @login_manager.user_loader
 def load_user(user_id):
     from app.models import User
-    return User.query.filter_by(id=user_id).first()
+    from app.db_info import Session
+    session = Session()
+    user = session.query(User).options(subqueryload(User.address)).filter(User.id == user_id).first()
+    session.close()
+    return user

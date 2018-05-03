@@ -8,6 +8,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from app.models import User, Address, Pet
 from app.db_info import Session
 from app.subapps.home.forms import LoginForm, RegisterForm, UserProfileForm,PetForm
+from app.subapps.util import flash_form_errors
 
 homeRoute = Blueprint('homeRoute', __name__,
                       template_folder='templates', static_folder='static')
@@ -63,6 +64,31 @@ def pet():
     return render_template('home/pet.html', form=form, current_page="user",pet_list = pet_list,user_tab="pet")
 
 
+@homeRoute.route('/pet_add', methods=['POST'])
+@login_required
+def pet_add():
+    form = PetForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        breed = form.breed.data
+        gender = form.gender.data
+        dob = form.dob.data
+
+        try:
+            session = Session()
+            this_pet = Pet(current_user.id,name,breed,gender,dob)
+            session.add(this_pet)
+            session.commit()
+            session.close()
+            flash("Add pet sucessfully", "success")
+        except Exception  as e:
+            flash("Add pet failed", "danger")
+            flash(e)
+            redirect(url_for("homeRoute.pet"))
+        return redirect(url_for("homeRoute.pet"))
+    flash("Add pet failed", "danger")
+    return redirect(url_for("homeRoute.pet"))
+
 @homeRoute.route('/pet_update', methods=['POST'])
 @login_required
 def pet_update():
@@ -77,16 +103,20 @@ def pet_update():
         try:
             session = Session()
             this_pet = session.query(Pet).filter(Pet.id == id, Pet.owner_id == current_user.id)
-            this_pet.update(
-                {
-                    'name': name,
-                    'breed': breed,
-                    'gender': gender,
-                    'dob': dob,
-                },
-                synchronize_session='evaluate'
-            )
-            session.commit()
+            if this_pet.count() > 0:
+                this_pet.update(
+                    {
+                        'name': name,
+                        'breed': breed,
+                        'gender': gender,
+                        'dob': dob,
+                    },
+                    synchronize_session='evaluate'
+                )
+                session.commit()
+                session.close()
+            else:
+                flash(("Pet %s is not found under user %s" % name,current_user.email), "danger")
 
         except Exception  as e:
             flash("Update pet information failed", "danger")
@@ -97,10 +127,19 @@ def pet_update():
         return redirect(url_for("homeRoute.pet"))
     return redirect(url_for("homeRoute.pet"))
 
-@homeRoute.route('/pet_delete')
+@homeRoute.route('/pet_delete/<int:pet_id>',methods=['GET'])
 @login_required
-def pet_delete():
-    pass
+def pet_delete(pet_id):
+    session = Session()
+    this_pet = session.query(Pet).filter(Pet.id == pet_id, Pet.owner_id == current_user.id)
+    if this_pet.count() > 0:
+        this_pet.delete()
+        session.commit()
+        session.close()
+        flash(("Pet %d is deleted successfully" % pet_id), "success")
+    else:
+        flash(("Pet %d is not found under user %s" % pet_id, current_user.email), "danger")
+    return redirect(url_for("homeRoute.pet"))
 
 @homeRoute.route('/user', methods=['GET', 'POST'])
 @login_required
@@ -154,6 +193,7 @@ def user_update():
             )
 
             session.commit()
+            session.close()
 
         except Exception  as e:
             flash("Update user profile failed","danger")
@@ -198,6 +238,7 @@ def register():
             session.add(address)
             session.add(user)
             session.commit()
+            session.close()
         except Exception  as e:
             flash("Register Failed, check again later", "danger")
             flash(e)

@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url_for("homeRoute.pet_update") }}" method="post">
+                <form action="{{ url_for("homeRoute.pet_update") }}" method="post" id="pet_action">
                     {{ form.csrf_token }}
                     <div class="form-group row">
                         <label for="input_{{ form.name.id }}"
@@ -40,7 +40,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary" id="modal-submit">Update</button>
                     </div>
                 </form>
             </div>

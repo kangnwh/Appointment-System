@@ -84,8 +84,8 @@ class Pet(db.Model):
     gender = db.Column(db.CHAR(1))
     dob = db.Column(db.DATE, default=datetime.now)
 
-    def __init__(self, owner,name,breed,gender,dob):
-        self.owner = owner
+    def __init__(self, owner_id,name,breed,gender,dob):
+        self.owner_id = owner_id
         self.name = name
         self.breed = breed
         self.gender = gender
