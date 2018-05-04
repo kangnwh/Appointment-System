@@ -2,12 +2,28 @@
 
 This is an **Appointment System** for **Pet Grooming Service**.
 
+**NOTE**: This system is still under development phase. 
+
+Update Date:`4 May 2018`
+
+
+Subsystem|Status
+:-- | --- 
+User Register| Done 
+User Login| Done 
+Pet Add/Update/Delete| Done 
+Card Add/Update/Delete| Pending 
+Appointment Management| Pending 
+Admin Panel| Pending 
+|  
+
+
 ## Requirements
 This project is based on python 3.6.1
 
 ## How to start
 ##### config your db information 
-Note: default is sqlite3 with the db file under project folder `$project_folder/app.db`
+Note: default is sqlite3 with the db file under project folder `$project_folder/app/app.db`
 
 Or You can modify parameter `SQLALCHEMY_DATABASE_URI` in file  `app/config.py`.
 
