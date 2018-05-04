@@ -8,7 +8,6 @@ from flask_login import login_user, logout_user, login_required, current_user
 from app.models import User, Address, Pet
 from app.db_info import Session
 from app.subapps.home.forms import LoginForm, RegisterForm, UserProfileForm,PetForm
-from app.subapps.util import flash_form_errors
 
 homeRoute = Blueprint('homeRoute', __name__,
                       template_folder='templates', static_folder='static')
@@ -209,7 +208,6 @@ def user_update():
 @homeRoute.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
-
     if form.validate_on_submit():
         # address info
         city = form.city.data
