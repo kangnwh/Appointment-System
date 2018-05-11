@@ -1,0 +1,85 @@
+{% extends "home/management_base.html" %}
+
+
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Card Management {% endblock %}
+
+
+{% block main_content %}
+    <div class="card ">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-9">
+                    <h4> Cards </h4>
+                </div>
+                <div class="col-md-3">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                data-target="#pet_form"
+                                data-action="Add">
+                            Add New Card
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="list-group list-group-flush">
+            {% if card_list.__len__() > 0 %}
+                {% for card in card_list %}
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-5">
+                                {{ card.card_num }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ card.bank }}
+                            </div>
+                            <div class="col-md-3">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-info" data-toggle="modal"
+                                            data-target="#pet_form"
+                                            data-id="{{ card.id }}"
+                                            data-num="{{ card.card_num }}"
+                                            data-bank="{{ card.bank }}"
+                                            data-action="Update">
+                                        Update
+                                    </button>
+                                    <a class="btn btn-danger"
+                                       href="{{ url_for("homeRoute.card_delete",card_id=card.id) }}">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="list-group-item">No Card under this accound.</li>
+            {% endif %}
+        </ul>
+    </div>
+
+    {% include "home/_card_modal.html" %}
+    <script>
+        $('#pet_form').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+            var card_num = button.data('num');
+            var bank = button.data('bank');
+            var action = button.data('action');
+            var modal = $(this);
+
+            if (action) {
+                modal.find('#id_id').val(id);
+                modal.find('#id_card_num').val(card_num);
+                modal.find('#id_bank').val(bank);
+                if (action == "Update") {
+                    modal.find('#modal-submit').html(action);
+                    modal.find('#card_action').attr('action', "{{ url_for("homeRoute.card_update") }}");
+                } else if (action == "Add") {
+                    modal.find('#id_id').val(0);
+                    modal.find('#modal-submit').html(action);
+                    modal.find('#card_action').attr('action', "{{ url_for("homeRoute.card_add") }}");
+                }
+
+            }
+        })
+    </script>
+{% endblock %}

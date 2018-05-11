@@ -5,9 +5,9 @@ from flask import Blueprint, url_for, flash, request
 from flask import render_template, redirect
 from flask_login import login_user, logout_user, login_required, current_user
 
-from app.models import User, Address, Pet
+from app.models import User, Address, Pet,Card
 from app.db_info import Session
-from app.subapps.home.forms import LoginForm, RegisterForm, UserProfileForm,PetForm
+from app.subapps.home.forms import LoginForm, RegisterForm, UserProfileForm,PetForm,CardForm
 
 homeRoute = Blueprint('homeRoute', __name__,
                       template_folder='templates', static_folder='static')
@@ -250,3 +250,85 @@ def register():
         return redirect(next or url_for('homeRoute.index'))
 
     return render_template('home/register.html', form=form)
+
+#############
+
+@homeRoute.route('/card')
+@login_required
+def card():
+    session = Session()
+    card_list = session.query(Card).filter(Card.owner_id == current_user.id).all()
+    form = CardForm()
+    return render_template('home/card.html', form=form, current_page="user",card_list = card_list,user_tab="card")
+
+
+@homeRoute.route('/card_add', methods=['POST'])
+@login_required
+def card_add():
+    form = CardForm()
+    if form.validate_on_submit():
+        card_num = form.card_num.data
+        bank = form.bank.data
+
+        try:
+            session = Session()
+            this_card = Card(current_user,card_num,bank)
+            session.add(this_card)
+            session.commit()
+            session.close()
+            flash("Add Card sucessfully", "success")
+        except Exception  as e:
+            flash("Add card failed", "danger")
+            flash(e)
+            redirect(url_for("homeRoute.card"))
+        return redirect(url_for("homeRoute.card"))
+    flash("Add card failed", "danger")
+    return redirect(url_for("homeRoute.card"))
+
+@homeRoute.route('/card_update', methods=['POST'])
+@login_required
+def card_update():
+    form = CardForm()
+    if form.validate_on_submit():
+        id = form.id.data
+        card_num = form.card_num.data
+        bank = form.bank.data
+
+        try:
+            session = Session()
+            this_card = session.query(Card).filter(Card.id == id, Card.owner_id == current_user.id)
+            if this_card.count() > 0:
+                this_card.update(
+                    {
+                        'card_num': card_num,
+                        'bank': bank
+                    },
+                    synchronize_session='evaluate'
+                )
+                session.commit()
+                session.close()
+            else:
+                flash(("Card is not found under user %s" % current_user.email), "danger")
+
+        except Exception  as e:
+            flash("Update Card information failed", "danger")
+            flash(e)
+            redirect(url_for("homeRoute.card"))
+
+        flash("Update Card information Successfully.", "success")
+        return redirect(url_for("homeRoute.card"))
+    return redirect(url_for("homeRoute.card"))
+
+@homeRoute.route('/card_delete/<int:card_id>',methods=['GET'])
+@login_required
+def card_delete(card_id):
+    session = Session()
+    this_card = session.query(Card).filter(Card.id == card_id, Card.owner_id == current_user.id)
+    if this_card.count() > 0:
+        this_card.delete()
+        session.commit()
+        session.close()
+        flash(("Card is deleted successfully"), "success")
+    else:
+        flash(("Card is not found under user %s" % current_user.email), "danger")
+    return redirect(url_for("homeRoute.card"))

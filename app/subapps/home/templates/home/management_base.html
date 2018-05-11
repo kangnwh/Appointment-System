@@ -14,7 +14,7 @@
                     <a class="nav-link {% if user_tab == "pet" %} active {% endif %}" href="{{ url_for("homeRoute.pet") }}">Pets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if user_tab == "card" %} active {% endif %}" href="#">Cards</a>
+                    <a class="nav-link {% if user_tab == "card" %} active {% endif %}" href="{{ url_for("homeRoute.card") }}">Cards</a>
                 </li>
             </ul>
         </div>

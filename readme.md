@@ -14,8 +14,7 @@ User Login| Done
 Pet Add/Update/Delete| Done 
 Card Add/Update/Delete| Pending 
 Appointment Management| Pending 
-Admin Panel| Pending 
-|  
+Admin Panel| Pending
 
 
 ## Requirements
