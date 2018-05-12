@@ -33,12 +33,12 @@
                             <div class="form-group row">
                                 <label for="input_{{ form.home_number.name }}"
                                        class="col-sm-5 col-form-label">{{ form.home_number.label }} (opt) </label>
-                                {{ form_macro.render_string(form.home_number,class='col-sm-7') }}
+                                {{ form_macro.render_string(form.home_number,class='col-sm-7',required=false) }}
                             </div>
                             <div class="form-group row">
                                 <label for="input_{{ form.work_number.name }}"
                                        class="col-sm-5 col-form-label">{{ form.work_number.label }} (opt)</label>
-                                {{ form_macro.render_string(form.work_number,class='col-sm-7') }}
+                                {{ form_macro.render_string(form.work_number,class='col-sm-7',required=false) }}
                             </div>
                             <div class="form-group row">
                                 <label for="input_{{ form.dob.name }}"

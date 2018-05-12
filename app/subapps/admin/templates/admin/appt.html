@@ -1,6 +1,6 @@
 {% extends "admin/admin_base.html" %}
 
-{% block title %} {{ config.DEFAULT_APP_NAME }} - Appointment {% endblock %}
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Appointment Admin {% endblock %}
 
 
 {% block content %}
@@ -78,7 +78,7 @@
     <script type=text/javascript>
         $(function () {
             function appt_li(item) {
-                url_pre = '{{ url_for("adminRoute.appt_finish") }}';
+                const url_pre = '{{ url_for("adminRoute.appt_finish") }}';
                 return '<li class="list-group-item"><div class="row">'
                     + '<div class="col-md-2">' + item.user + '<br>' + item.phone
                     + '</div><div class="col-md-2">' + item.address
@@ -90,7 +90,6 @@
             }
 
             function update_appt_list(data) {
-                console.log(data);
                 $("#appt_list").children('li').remove();
                 $.each(data.list, function (i, item) {
                     const li_html = appt_li(item);

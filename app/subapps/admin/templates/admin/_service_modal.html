@@ -1,6 +1,6 @@
 {% import "forms/_fields_macro.html" as form_macro %}
 
-<div class="modal fade" id="pet_form" tabindex="-1" role="dialog" aria-labelledby="petModalLabel" aria-hidden="true">
+<div class="modal fade" id="service_form" tabindex="-1" role="dialog" aria-labelledby="petModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ url_for("homeRoute.pet_update") }}" method="post" id="pet_action">
+                <form action="{{ url_for("adminRoute.service_update") }}" method="post" id="service_form">
                     {{ form.csrf_token }}
                     <div class="form-group row">
                         <label for="input_{{ form.id.name }}"
@@ -18,24 +18,19 @@
                         {{ form_macro.render_string(form.id,readonly=true) }}
                     </div>
                     <div class="form-group row">
-                        <label for="input_{{ form.name.name }}"
-                               class="col-sm-4 col-form-label">{{ form.name.label }} </label>
-                        {{ form_macro.render_string(form.name) }}
+                        <label for="input_{{ form.type.name }}"
+                               class="col-sm-4 col-form-label">{{ form.type.label }} </label>
+                        {{ form_macro.render_string(form.type) }}
                     </div>
                     <div class="form-group row">
-                        <label for="input_{{ form.gender.name }}"
-                               class="col-sm-4 col-form-label">{{ form.gender.label }} </label>
-                        {{ form_macro.render_select(form.gender) }}
+                        <label for="input_{{ form.desc.name }}"
+                               class="col-sm-4 col-form-label">{{ form.desc.label }} </label>
+                        {{ form_macro.render_string(form.desc) }}
                     </div>
                     <div class="form-group row">
-                        <label for="input_{{ form.breed.name }}"
-                               class="col-sm-4 col-form-label">{{ form.breed.label }} </label>
-                        {{ form_macro.render_string(form.breed) }}
-                    </div>
-                    <div class="form-group row">
-                        <label for="input_{{ form.dob.name }}"
-                               class="col-sm-4 col-form-label">{{ form.dob.label }} </label>
-                        {{ form_macro.render_date(form.dob) }}
+                        <label for="input_{{ form.fee.name }}"
+                               class="col-sm-4 col-form-label">{{ form.fee.label }} </label>
+                        {{ form_macro.render_float(form.fee) }}
                     </div>
 
                     <div class="modal-footer">

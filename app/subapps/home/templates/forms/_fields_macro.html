@@ -13,6 +13,17 @@
 {%- endmacro %}
 
 
+{% macro render_float(field, value='', step=0.01, readonly=None,class='col-sm-8',required=true) -%}
+    <div class="{{ class }}">
+        <input type="number" placeholder="{{ field.name }}" class="form-control" step="{{ step }}"
+                {% if readonly %} readonly {% endif %}
+                {% if required %} required {% endif %}
+               id="id_{{ field.name }}"
+               name="{{ field.name }}" value="{{ value|e }}">
+    </div>
+    {{ show_errors(field) }}
+{% endmacro %}
+
 
 {% macro render_string(field, value='', type='text', readonly=None,class='col-sm-8',required=true) -%}
     <div class="{{ class }}">

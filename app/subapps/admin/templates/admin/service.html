@@ -1,0 +1,94 @@
+{% extends "admin/admin_base.html" %}
+
+
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Service Admin {% endblock %}
+
+{% block content %}
+    <div class="offset-md-2 col-md-8">
+        <div class="card ">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <h4> Services </h4>
+                    </div>
+                    <div class="offset-md-3 col-md-3">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-info" data-toggle="modal"
+                                    data-target="#service_form"
+                                    data-action="Add">
+                                Add New Service
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <ul class="list-group list-group-flush">
+                {% if service_list.__len__() > 0 %}
+                    {% for service in service_list %}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    {{ service.type }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ service.desc }}
+                                </div>
+                                <div class="col-md-2">
+                                    {{ service.fee }}
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                                data-target="#service_form"
+                                                data-id="{{ service.id }}"
+                                                data-type="{{ service.type }}"
+                                                data-desc="{{ service.desc }}"
+                                                data-fee="{{ service.fee }}"
+                                                data-action="Update">
+                                            Update
+                                        </button>
+                                        <a class="btn btn-danger"
+                                           href="{{ url_for("adminRoute.service_delete",service_id=service.id) }}">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="list-group-item">No Pet under this accound.</li>
+                {% endif %}
+            </ul>
+        </div>
+
+        {% include "admin/_service_modal.html" %}
+        <script>
+            $('#service_form').on('show.bs.modal', function (event) {
+                const button = $(event.relatedTarget);
+                const id = button.data('id');
+                const type = button.data('type');
+                const desc = button.data('desc');
+                const fee = button.data('fee');
+                const action = button.data('action');
+                const modal = $(this);
+
+                if (action) {
+                    modal.find('.modal-title').text(type);
+                    modal.find('#id_id').val(id);
+                    modal.find('#id_type').val(type);
+                    modal.find('#id_desc').val(desc);
+                    modal.find('#id_fee').val(fee);
+                    if (action == "Update") {
+                        modal.find('#modal-submit').html(action);
+                        modal.find('#service_form').attr('action', "{{ url_for("adminRoute.service_update") }}");
+                    } else if (action == "Add") {
+                        modal.find('#id_id').val(0);
+                        modal.find('#modal-submit').html(action);
+                        modal.find('#service_form').attr('action', "{{ url_for("adminRoute.service_add") }}");
+                    }
+
+                }
+            })
+        </script>
+    </div>
+{% endblock %}
