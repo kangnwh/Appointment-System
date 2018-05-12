@@ -1,13 +1,9 @@
 # -*- coding: utf-8 -*-
-import hashlib, datetime as dt
 
-from flask import Blueprint, url_for, flash, request, jsonify
-from flask import render_template, redirect
-from flask_login import login_user, logout_user, login_required, current_user
+from flask import Blueprint, request, jsonify
 
 from app.models import *
-from app.db_info import Session
-from app.subapps.home.forms import *
+from app.utli.forms import *
 
 restRoute = Blueprint('restRoute', __name__,
                       template_folder='templates', static_folder='static')

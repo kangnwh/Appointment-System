@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-from flask import Blueprint, request, url_for, jsonify, redirect, json
-from flask import render_template, flash, render_template_string
-from flask_login import login_required, current_user
-from functools import wraps
-from app.db_info import Session
 import datetime as dt
+from functools import wraps
+
+from flask import Blueprint, request, url_for, jsonify, redirect, current_app as app
+from flask import render_template, flash, render_template_string
+from flask_login import login_required
+
 from app.models import *
-from app.subapps.admin.forms import *
-from app.subapps.home.forms import *
+from app.utli.forms import *
 
 adminRoute = Blueprint('adminRoute', __name__,
                        template_folder='templates', static_folder='static')
@@ -132,18 +132,88 @@ def service_add():
     return redirect(url_for("adminRoute.service"))
 
 
+@adminRoute.route('/administrator', methods=['GET', 'POST'])
+@login_required
+@admin_only
+def administrator():
+    form = UserProfileForm()
+    if form.validate_on_submit():
+        # address info
+        # address_id = form.address_id.data
+        city = form.city.data
+        street = form.street.data
+        post = form.post_code.data
+        # address = Address(city, street, post_code=post)
+
+        # User info
+        first_name = form.first_name.data
+        last_name = form.last_name.data
+        email = form.email.data
+        phone = form.phone.data
+        home_numaber = form.home_number.data
+        work_number = form.work_number.data
+        gender = form.gender.data
+        dob = form.dob.data
+
+        # md5 = hashlib.md5()
+        # md5.update(form.password.data.encode('utf-8')) # TODO encrypt password
+        # password = md5.hexdigest()
+        # password = form.password.data
+
+        try:
+            session = Session()
+            session.query(Address).filter(Address.id == current_user.address.id).update(
+                {
+                    'city': city,
+                    'street': street,
+                    'post_code': post,
+                },
+                synchronize_session='evaluate'
+            )
+            session.query(User).filter(User.id == current_user.id).update(
+                {
+                    "first_name": first_name,
+                    'last_name': last_name,
+                    'email':email,
+                    'phone': phone,
+                    'home_number': home_numaber,
+                    'work_number': work_number,
+                    'dob': dob,
+                    'gender': gender
+                }
+                , synchronize_session='evaluate'
+            )
+
+            session.commit()
+            session.close()
+            # app.config["REMINDER_PRE"] = reminder_period
+
+            flash("Update admin profile successfully", "success")
+        except Exception  as e:
+            flash("Update user profile failed", "danger")
+            flash(e)
+            return render_template('admin/administrator.html', form=form)
+        return redirect(url_for('adminRoute.administrator'))
+    return render_template('admin/administrator.html', form=form, current_page="admin")
+
+
 @adminRoute.route('/reminder', methods=['GET', 'POST'])
 @login_required
 @admin_only
 def reminder():
-    return render_template("admin/appt.html")
+    form = ReminderForm()
+    if form.validate_on_submit():
+        reminder_period = form.reminder_period.data
+        via_email = form.via_email.data
+        via_message = form.via_message.data
 
+        app.config['REMINDER_PRE'] = reminder_period
+        app.config['VIA_EMAIL'] = via_email
+        app.config['VIA_PHONE_MESSAGE'] = via_message
+        flash("Update reminder information successfully","success")
 
-@adminRoute.route('/adminstrator', methods=['GET', 'POST'])
-@login_required
-@admin_only
-def admin():
-    return render_template("admin/appt.html")
+    reminder_config = [app.config['REMINDER_PRE'],app.config['VIA_EMAIL'],app.config['VIA_PHONE_MESSAGE']]
+    return render_template("admin/reminder.html",form=form,reminder_config=reminder_config,current_page="reminder")
 
 
 @adminRoute.route('/appt_by_date/', methods=['GET'])

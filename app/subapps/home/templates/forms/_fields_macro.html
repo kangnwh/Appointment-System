@@ -14,16 +14,33 @@
 
 
 {% macro render_float(field, value='', step=0.01, readonly=None,class='col-sm-8',required=true) -%}
-    <div class="{{ class }}">
+    {% if class != "" %}
+        <div class="{{ class }}">
+    {% endif %}
         <input type="number" placeholder="{{ field.name }}" class="form-control" step="{{ step }}"
                 {% if readonly %} readonly {% endif %}
                 {% if required %} required {% endif %}
                id="id_{{ field.name }}"
                name="{{ field.name }}" value="{{ value|e }}">
-    </div>
+    {% if class != "" %}
+        </div>
+    {% endif %}
     {{ show_errors(field) }}
 {% endmacro %}
 
+{% macro render_boolean(field,checked=False,readonly=None,class='col-sm-8') -%}
+    {% if class != "" %}
+        <div class="{{ class }}">
+    {% endif %}
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="id_{{ field.name }}" name="{{ field.name }}" {% if checked %} checked {% endif %}>
+            <label class="form-check-label" for="{{ field.name }}">{{ field.label }}</label>
+        </div>
+    {% if class != "" %}
+        </div>
+    {% endif %}
+    {{ show_errors(field) }}
+{% endmacro %}
 
 {% macro render_string(field, value='', type='text', readonly=None,class='col-sm-8',required=true) -%}
     <div class="{{ class }}">
@@ -57,7 +74,7 @@
             <option selected>Choose...</option>
             {% for option in field.choices %}
                 <option value={{ option[0] }} {% if value == option[0] %}
-                        selected {% endif %}>{{ option[1] }}</option>
+                    selected {% endif %}>{{ option[1] }}</option>
             {% endfor %}
 
         </select>
@@ -67,10 +84,11 @@
 
 {% macro render_multiselect(field,selected_list=[],class='col-sm-8') -%}
     <div class="{{ class }}">
-        <select multiple class="form-control" id="id_{{ field.name }}"  name="{{ field.name }}">
+        <select multiple class="form-control" id="id_{{ field.name }}" name="{{ field.name }}">
             {% for option in field.choices %}
                 <option value="{{ option[0] }}" {% if option[0] in selected_list %}
-                        selected {% endif %}>{{ option[1] }} ( {{ option[2] }} ß)</option>
+                        selected {% endif %}>{{ option[1] }} ( {{ option[2] }} ß)
+                </option>
             {% endfor %}
         </select>
     </div>

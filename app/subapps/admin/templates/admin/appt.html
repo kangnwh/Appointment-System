@@ -91,6 +91,10 @@
 
             function update_appt_list(data) {
                 $("#appt_list").children('li').remove();
+                if(data.list.length ==0 ){
+                    $("#appt_list").append('<li class="list-group-item">No Appointment on '+ $('#id_date_filter').val()+' .</li>');
+                    return true;
+                }
                 $.each(data.list, function (i, item) {
                     const li_html = appt_li(item);
                     console.log(li_html);

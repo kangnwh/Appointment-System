@@ -1,0 +1,40 @@
+{% extends "admin/admin_base.html" %}
+{% import "forms/_fields_macro.html" as form_macro %}
+
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Reminder Config {% endblock %}
+
+{% block content %}
+    <div class="offset-md-2 col-md-8">
+        <div class="card ">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <h4> Reminder Config </h4>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <form action="{{ url_for("adminRoute.reminder") }}" method="post">
+                    {{ form.csrf_token }}
+                    <div class="form-row">
+                        <label class="col-md-12"
+                               for="input_{{ form.reminder_period.name }}">{{ form.reminder_period.label }} </label>
+                        {{ form_macro.render_float(form.reminder_period,value=reminder_config[0],step=0.5,class="col-md-6") }}
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group mb-3">
+                            {{ form_macro.render_boolean(form.via_email,checked=reminder_config[1]) }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group mb-3">
+                            {{ form_macro.render_boolean(form.via_message,checked=reminder_config[2]) }}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

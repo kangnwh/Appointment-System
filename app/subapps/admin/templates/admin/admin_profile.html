@@ -1,7 +1,7 @@
 {% import "forms/_fields_macro.html" as form_macro %}
 
 
-<form action="{{ url_for('homeRoute.user_update') }}" method="post">
+<form action="{{ url_for('adminRoute.administrator') }}" method="post">
     {{ form.csrf_token }}
     <div class="row">
         {#        <div class="col-md-6">#}
@@ -14,21 +14,15 @@
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.first_name.name }}">{{ form.first_name.label }} </label>
                         {{ form_macro.render_string(form.first_name,class="",value=current_user.first_name) }}
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.last_name.name }}">{{ form.last_name.label }} </label>
                         {{ form_macro.render_string(form.last_name,value=current_user.last_name,class="") }}
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.email.name }}">{{ form.email.label }} </label>
                         <div class="input-group">
-                            {{ form_macro.render_string(form.email,value=current_user.email,readonly=true,class="") }}
+                            {{ form_macro.render_string(form.email,value=current_user.email,class="") }}
                             <div class="invalid-tooltip">
                                 Please choose a unique and valid username.
                             </div>
@@ -39,16 +33,12 @@
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.dob.name }}">{{ form.dob.label }} </label>
                         {{ form_macro.render_date(form.dob,class="",value=current_user.dob) }}
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
+
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.gender.name }}">{{ form.gender.label }} </label>
                         {{ form_macro.render_select(form.gender,class="",value=current_user.gender) }}
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -64,46 +54,34 @@
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.phone.name }}">{{ form.phone.label }} </label>
                         {{ form_macro.render_string(form.phone,class="",value=current_user.phone) }}
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
+
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.home_number.name }}">{{ form.home_number.label }} </label>
                         {{ form_macro.render_string(form.home_number,class="",value=current_user.home_number) }}
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
+
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.work_number.name }}">{{ form.work_number.label }} </label>
                         {{ form_macro.render_string(form.work_number,class="",value=current_user.work_number) }}
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
+
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.city.name }}">{{ form.city.label }} </label>
                         {{ form_macro.render_string(form.city,class="",value=current_user.address.city) }}
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
+
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.street.name }}">{{ form.street.label }} </label>
                         {{ form_macro.render_string(form.street,class="",value=current_user.address.street) }}
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
+
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.post_code.name }}">{{ form.post_code.label }} </label>
                         {{ form_macro.render_string(form.post_code,class="",value=current_user.address.post_code) }}
-                        <div class="valid-tooltip">
-                            Looks good!
-                        </div>
+
                     </div>
                 </div>
             </div>

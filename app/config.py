@@ -13,6 +13,7 @@ ADMIN_PASSWD = 'passw0rd'
 DEFAULT_APP_NAME = 'AppointmentSys'
 PORT = 5001
 HOST = '127.0.0.1'
-
-
-
+# Reminder config
+REMINDER_PRE = 2 #hours
+VIA_EMAIL = True
+VIA_PHONE_MESSAGE = False

@@ -1,0 +1,9 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Reminder Config {% endblock %}
+
+{% block content %}
+    <div class="col-md-8 offset-md-2">
+        {% include "admin/admin_profile.html" with context %}
+    </div>
+{% endblock %}

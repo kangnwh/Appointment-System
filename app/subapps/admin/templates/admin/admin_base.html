@@ -29,7 +29,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if current_page == 'admin' %}btn btn-success{% endif %}"
-                       href="{{ url_for('adminRoute.admin') }}">Administrator</a>
+                       href="{{ url_for('adminRoute.administrator') }}">Administrator</a>
                 </li>
             </ul>
             {% if current_user.is_authenticated %}
@@ -44,8 +44,6 @@
                 </div>
             {% endif %}
             <div class="col-md-1"></div>
-
-
         </div>
     </nav>
 
