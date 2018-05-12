@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94fe0d93-44d5-41d7-91c5-12b343ba694f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/subapps/admin/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/subapps/admin/templates/admin/_service_modal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/subapps/admin/templates/admin/service.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/subapps/admin/forms/__init__.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.db" afterPath="$PROJECT_DIR$/app/app.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/admin/routing.py" afterPath="$PROJECT_DIR$/app/subapps/admin/routing.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/admin/templates/admin/admin_base.html" afterPath="$PROJECT_DIR$/app/subapps/admin/templates/admin/admin_base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/admin/templates/admin/appt.html" afterPath="$PROJECT_DIR$/app/subapps/admin/templates/admin/appt.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/forms/_fields_macro.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/forms/_fields_macro.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/forms/appt_add.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/forms/appt_add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/forms/register_form.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/forms/register_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/home/_pet_modal.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/home/_pet_modal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/home/login.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/home/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="app/app.db" />
@@ -43,7 +34,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5751634">
+    <splitter split-orientation="horizontal" split-proportion="0.6920462">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="service.html" pinned="false" current-in-tab="false">
@@ -62,6 +53,21 @@
                 <state relative-caret-position="120">
                   <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="36" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/readme.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+                <state split_layout="SPLIT">
+                  <first_editor relative-caret-position="285">
+                    <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+                    <folding />
+                  </first_editor>
+                  <second_editor>
+                    <js_state />
+                  </second_editor>
                 </state>
               </provider>
             </entry>
@@ -96,11 +102,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="routing.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="routing.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/subapps/admin/routing.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="385">
-                  <caret line="65" column="23" lean-forward="false" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+                <state relative-caret-position="-1213">
+                  <caret line="54" column="99" lean-forward="false" selection-start-line="54" selection-start-column="99" selection-end-line="54" selection-end-column="99" />
                   <folding>
                     <element signature="e#24#94#0" expanded="true" />
                   </folding>
@@ -111,8 +117,8 @@
           <file leaf-file-name="admin_base.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/subapps/admin/templates/admin/admin_base.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+                <state relative-caret-position="330">
+                  <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="70" />
                   <folding />
                 </state>
               </provider>
@@ -204,7 +210,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/mockdata.py" />
         <option value="$PROJECT_DIR$/app/subapps/home/templates/home/management_base.html" />
         <option value="$PROJECT_DIR$/app/subapps/home/templates/home/_card_modal.html" />
@@ -243,6 +248,7 @@
         <option value="$PROJECT_DIR$/app/subapps/admin/templates/admin/service.html" />
         <option value="$PROJECT_DIR$/app/subapps/admin/templates/admin/_service_modal.html" />
         <option value="$PROJECT_DIR$/app/subapps/admin/routing.py" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -821,7 +827,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526113683699</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="admin - service management">
+      <created>1526121300785</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1526121300785</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -830,14 +843,14 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24257426" sideWeight="0.5021299" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="100" width="1720" height="880" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24257426" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24257426" sideWeight="0.4978701" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32970297" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23663366" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18530351" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21671991" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09744409" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -865,7 +878,8 @@
     <MESSAGE value="card management" />
     <MESSAGE value="appointment subsystem" />
     <MESSAGE value="admin - appointment" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin - appointment" />
+    <MESSAGE value="admin - service management" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin - service management" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -913,19 +927,6 @@
         <state relative-caret-position="60">
           <caret line="4" column="10" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="10" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="90">
-            <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <js_state />
-          </second_editor>
         </state>
       </provider>
     </entry>
@@ -1238,14 +1239,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/subapps/admin/templates/admin/admin_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/home/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1313,13 +1306,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/subapps/admin/templates/admin/admin_base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/subapps/admin/routing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="65" column="23" lean-forward="false" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+        <state relative-caret-position="-1213">
+          <caret line="54" column="99" lean-forward="false" selection-start-line="54" selection-start-column="99" selection-end-line="54" selection-end-column="99" />
           <folding>
             <element signature="e#24#94#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="285">
+            <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <js_state />
+          </second_editor>
         </state>
       </provider>
     </entry>

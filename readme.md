@@ -4,7 +4,7 @@ This is an **Appointment System** for **Pet Grooming Service**.
 
 **NOTE**: This system is still under development phase. 
 
-Update Date:`4 May 2018`
+Update Date:`12 May 2018`
 
 
 Subsystem|Status
@@ -12,9 +12,12 @@ Subsystem|Status
 User Register| Done 
 User Login| Done 
 Pet Add/Update/Delete| Done 
-Card Add/Update/Delete| Pending 
-Appointment Management| Pending 
-Admin Panel| Pending
+Card Add/Update/Delete| Done
+Appointment Management| Done
+Admin-Appointment Mgt| Done
+Admin-Service Mgt| Done
+Admin-Reminder Mgt| Pending
+Admin-Administrator Mgt| Pending
 
 
 ## Requirements

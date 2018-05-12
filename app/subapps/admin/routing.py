@@ -52,7 +52,7 @@ def service():
     session = Session()
     service_list = session.query(Service).all()
     form = ServiceForm()
-    return render_template("admin/service.html", service_list=service_list, form=form)
+    return render_template("admin/service.html", service_list=service_list, form=form,current_page = 'service')
 
 
 @adminRoute.route('/service_delete/<int:service_id>', methods=['GET', 'POST'])
