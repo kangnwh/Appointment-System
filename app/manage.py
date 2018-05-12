@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import subqueryload
 from app.utli import DateConverter
+import datetime as dt
 
 
 login_manager = LoginManager()
@@ -35,7 +36,7 @@ def registerModuled():
     for module,url_prefix in DEFAULT_MODULES:
         app.register_blueprint(module, url_prefix=url_prefix)
 
-    # app.config['REST_URL'] = url_for("restRoute")
+    app.config['today'] = dt.date.today()
     return app
 
 

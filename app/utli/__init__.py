@@ -1,6 +1,7 @@
 from datetime import datetime
 from werkzeug.routing import BaseConverter, ValidationError
 
+
 class DateConverter(BaseConverter):
     """Extracts a ISO8601 date from the path and validates it."""
 

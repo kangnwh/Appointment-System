@@ -1,0 +1,113 @@
+{% extends "admin/admin_base.html" %}
+
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Appointment {% endblock %}
+
+
+{% block content %}
+    <div class="card ">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4> My Appointment List </h4>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="input-group input-group-default">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
+                        </div>
+                         <input type="text" readonly class=" form-control" style="background-color: #2e6da4;color:#fff;"
+                           id="id_date_filter" data-date-format="yyyy-mm-dd"
+                           value="{{ config['today'].strftime("%Y-%m-%d") }}">
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $("#id_date_filter").datepicker({format: 'yyyy-mm-dd', autoclose: true});
+                        });
+                    </script>
+                </div>
+
+
+            </div>
+
+        </div>
+        <ul class="list-group list-group-flush" id="appt_list">
+
+            {% if appt_list.__len__() > 0 %}
+                {% for appt in appt_list %}
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-2">
+                                {{ appt.appt_date }}
+                            </div>
+                            <div class="col-md-2">
+                                {{ appt.appt_timeslot.slot }}
+                            </div>
+                            <div class="col-md-3">
+                                {% for mapping in appt.appt_service %}
+                                    {{ mapping.service.type }}<br>
+                                {% endfor %}
+
+                            </div>
+                            <div class="col-md-2">
+                                {{ appt.status }}<br>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="btn-group" role="group">
+                                    {% if appt.status != "Done" %}
+                                        <a class="btn btn-warning"
+                                           href="{{ url_for("homeRoute.appt_finish",appt_id=id) }}">
+                                            Reschedule
+                                        </a>
+                                        <a class="btn btn-danger"
+                                           href="{{ url_for("homeRoute.appt_delete",appt_id=id) }}">Delete</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="list-group-item">No Appointment today.</li>
+            {% endif %}
+
+        </ul>
+    </div>
+    <script type=text/javascript>
+        $(function () {
+            function appt_li(item) {
+                url_pre = '{{ url_for("adminRoute.appt_finish") }}';
+                return '<li class="list-group-item"><div class="row">'
+                    + '<div class="col-md-2">' + item.user + '<br>' + item.phone
+                    + '</div><div class="col-md-2">' + item.address
+                    + '</div><div class="col-md-2">' + item.time
+                    + '</div><div class="col-md-2">' + item.services
+                    + '</div><div class="col-md-2">' + status
+                    + '</div><div class="col-md-2"><div class="btn-group" role="group"><a class="btn btn-warning" href="' + url_pre + item.id
+                    + '"> Finish </a><a class="btn btn-danger" href="#">Delete</a></div></div></div></li>';
+            }
+
+            function update_appt_list(data) {
+                console.log(data);
+                $("#appt_list").children('li').remove();
+                $.each(data.list, function (i, item) {
+                    const li_html = appt_li(item);
+                    console.log(li_html);
+                    $("#appt_list").append(li_html);
+                });
+                return true;
+            }
+
+            $('#id_date_filter').bind('change', function () {
+                $.getJSON('{{ url_for("adminRoute.appt_by_date") }}', {
+                    date: $('#id_date_filter').val()
+                }, update_appt_list);
+                return false;
+            });
+        });
+
+    </script>
+
+{% endblock %}
