@@ -15,11 +15,10 @@
 
 
 {% macro render_string(field, value='', type='text', readonly=None,class='col-sm-8',required=true) -%}
-
     <div class="{{ class }}">
         <input type="{{ type }}" placeholder="{{ field.name }}" class="form-control"
                 {% if readonly %} readonly {% endif %}
-               {% if required %} required {% endif %}
+                {% if required %} required {% endif %}
                id="id_{{ field.name }}"
                name="{{ field.name }}" value="{{ value|e }}">
     </div>
@@ -46,8 +45,7 @@
         <select class="custom-select" id="id_{{ field.name }}" name="{{ field.name }}">
             <option selected>Choose...</option>
             {% for option in field.choices %}
-
-                <option value="{{ option[0] }}" {% if value == option[0] %}
+                <option value={{ option[0] }} {% if value == option[0] %}
                         selected {% endif %}>{{ option[1] }}</option>
             {% endfor %}
 
@@ -56,9 +54,21 @@
     {{ show_errors(field) }}
 {% endmacro %}
 
+{% macro render_multiselect(field,selected_list=[],class='col-sm-8') -%}
+    <div class="{{ class }}">
+        <select multiple class="form-control" id="id_{{ field.name }}"  name="{{ field.name }}">
+            {% for option in field.choices %}
+                <option value="{{ option[0] }}" {% if option[0] in selected_list %}
+                        selected {% endif %}>{{ option[1] }} ( {{ option[2] }} ß)</option>
+            {% endfor %}
+        </select>
+    </div>
+    {{ show_errors(field) }}
+{% endmacro %}
+
 
 {% macro render_date(field,value="",class='col-sm-8') -%}
-    {{ show_errors(field) }}
+
     <div class="{{ class }}">
         <input type="text" value="{{ value }}" readonly class=" form-control {{ field.name }}"
                name="{{ field.name }}" id="id_{{ field.name }}" data-date-format="yyyy-mm-dd ">
@@ -68,4 +78,5 @@
             });
         </script>
     </div>
+    {{ show_errors(field) }}
 {% endmacro %}

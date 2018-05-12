@@ -1,0 +1,8 @@
+{% extends "home/appt_base.html" %}
+
+
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Appointment {% endblock %}
+
+{% block main_content %}
+    {% include "forms/appt_update.html" with context %}
+{% endblock %}

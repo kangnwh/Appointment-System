@@ -143,6 +143,7 @@ class Appt(db.Model):
                          nullable=False)
     appt_timeslot = db.relationship('ApptTimeSlot',
                             backref=db.backref('appt', lazy=True), foreign_keys=[appt_timeslot_id])
+    status = db.Column(db.String(10),default="Submitted")
     update_date = db.Column(db.DATE,default=datetime.now)
 
     def __init__(self,owner_id,appt_date,appt_timeslot_id):

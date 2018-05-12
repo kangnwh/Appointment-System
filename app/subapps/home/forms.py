@@ -1,8 +1,9 @@
 from flask_wtf import FlaskForm as Form
-from wtforms import BooleanField,PasswordField,StringField,IntegerField,DateField,SelectField
+from wtforms import PasswordField,StringField,IntegerField,DateField,SelectField,SelectMultipleField
 from wtforms.validators import DataRequired, EqualTo,Email,ValidationError
 from app.db_info import Session
-from app.models import User
+from app.models import User,Service,ApptTimeSlot
+from flask_login import current_user
 
 class LoginForm(Form):
     email = StringField('Email', validators = [DataRequired()])
@@ -64,3 +65,17 @@ class CardForm(Form):
     id = IntegerField("Card ID")
     card_num = StringField('Card No.', validators = [DataRequired()])
     bank = StringField('Bank', validators = [DataRequired()])
+
+class NoValidationSelectField(SelectField):
+    def pre_validate(self, form):
+        """per_validation is disabled"""
+
+
+class ApptForm(Form):
+    id = IntegerField("Appointment ID")
+    appt_date = DateField("Appointment Date")
+    appt_timeslot = NoValidationSelectField("Time Slot",coerce=int,choices=[(1,"Select date first")])
+    appt_service = SelectMultipleField("Services",coerce=int,choices=Session().query(Service.id,Service.type,Service.desc).all())
+
+    def pre_validate(self, form):
+        pass

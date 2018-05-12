@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-import hashlib, datetime
+import hashlib, datetime as dt
 
 from flask import Blueprint, url_for, flash, request
 from flask import render_template, redirect
 from flask_login import login_user, logout_user, login_required, current_user
 
-from app.models import User, Address, Pet,Card
+from app.models import *
 from app.db_info import Session
-from app.subapps.home.forms import LoginForm, RegisterForm, UserProfileForm,PetForm,CardForm
+from app.subapps.home.forms import *
 
 homeRoute = Blueprint('homeRoute', __name__,
                       template_folder='templates', static_folder='static')
@@ -32,12 +32,12 @@ def login():
         user = User.query.filter_by(email=email, password=password).first()
         if user:
             login_user(user, remember=True)
-            flash("Login Successfully.","success")
+            flash("Login Successfully.", "success")
             next = request.args.get('next')
             return redirect(next or url_for('homeRoute.index'))
 
         else:
-            flash("User ID or Password invalid.","danger")
+            flash("User ID or Password invalid.", "danger")
 
     return render_template('home/login.html', form=form)
 
@@ -48,19 +48,13 @@ def logout():
     return redirect(url_for("homeRoute.index"))
 
 
-@homeRoute.route('/appointment')
-@login_required
-def appointment():
-    return render_template('home/appointment.html', form=None, current_page="appointment")
-
-
 @homeRoute.route('/pet')
 @login_required
 def pet():
     session = Session()
     pet_list = session.query(Pet).filter(Pet.owner_id == current_user.id).all()
     form = PetForm()
-    return render_template('home/pet.html', form=form, current_page="user",pet_list = pet_list,user_tab="pet")
+    return render_template('home/pet.html', form=form, current_page="user", pet_list=pet_list, user_tab="pet")
 
 
 @homeRoute.route('/pet_add', methods=['POST'])
@@ -75,7 +69,7 @@ def pet_add():
 
         try:
             session = Session()
-            this_pet = Pet(current_user.id,name,breed,gender,dob)
+            this_pet = Pet(current_user.id, name, breed, gender, dob)
             session.add(this_pet)
             session.commit()
             session.close()
@@ -87,6 +81,7 @@ def pet_add():
         return redirect(url_for("homeRoute.pet"))
     flash("Add pet failed", "danger")
     return redirect(url_for("homeRoute.pet"))
+
 
 @homeRoute.route('/pet_update', methods=['POST'])
 @login_required
@@ -115,7 +110,7 @@ def pet_update():
                 session.commit()
                 session.close()
             else:
-                flash(("Pet %s is not found under user %s" % name,current_user.email), "danger")
+                flash(("Pet %s is not found under user %s" % name, current_user.email), "danger")
 
         except Exception  as e:
             flash("Update pet information failed", "danger")
@@ -126,7 +121,8 @@ def pet_update():
         return redirect(url_for("homeRoute.pet"))
     return redirect(url_for("homeRoute.pet"))
 
-@homeRoute.route('/pet_delete/<int:pet_id>',methods=['GET'])
+
+@homeRoute.route('/pet_delete/<int:pet_id>', methods=['GET'])
 @login_required
 def pet_delete(pet_id):
     session = Session()
@@ -139,6 +135,7 @@ def pet_delete(pet_id):
     else:
         flash(("Pet %d is not found under user %s" % pet_id, current_user.email), "danger")
     return redirect(url_for("homeRoute.pet"))
+
 
 @homeRoute.route('/user', methods=['GET', 'POST'])
 @login_required
@@ -182,9 +179,9 @@ def user_update():
                 {
                     "first_name": first_name,
                     'last_name': last_name,
-                    'phone':phone,
-                    'home_number':home_numaber,
-                    'work_number':work_number,
+                    'phone': phone,
+                    'home_number': home_numaber,
+                    'work_number': work_number,
                     'dob': dob,
                     'gender': gender
                 }
@@ -195,14 +192,14 @@ def user_update():
             session.close()
 
         except Exception  as e:
-            flash("Update user profile failed","danger")
+            flash("Update user profile failed", "danger")
             flash(e)
             return render_template('home/user.html', form=form)
 
-        flash("Update Successfully.","success")
+        flash("Update Successfully.", "success")
         next = request.args.get('next')
         return redirect(next or url_for('homeRoute.user_update'))
-    return render_template('home/user.html', form=form, current_page="user",user_tab="user")
+    return render_template('home/user.html', form=form, current_page="user", user_tab="user")
 
 
 @homeRoute.route('/register', methods=['GET', 'POST'])
@@ -229,7 +226,7 @@ def register():
         # password = md5.hexdigest()
         password = form.password.data
         user = User(email=email, password=password, first_name=first_name, last_name=last_name, dob=dob, gender=gender,
-                    address=address,phone=phone,home_number=home_numaber,work_number=work_number)
+                    address=address, phone=phone, home_number=home_numaber, work_number=work_number)
 
         try:
             session = Session()
@@ -244,14 +241,12 @@ def register():
             flash(e)
             return render_template('home/register.html', form=form)
 
-
-        flash("Register Successfully.","success")
+        flash("Register Successfully.", "success")
         next = request.args.get('next')
         return redirect(next or url_for('homeRoute.index'))
 
     return render_template('home/register.html', form=form)
 
-#############
 
 @homeRoute.route('/card')
 @login_required
@@ -259,7 +254,7 @@ def card():
     session = Session()
     card_list = session.query(Card).filter(Card.owner_id == current_user.id).all()
     form = CardForm()
-    return render_template('home/card.html', form=form, current_page="user",card_list = card_list,user_tab="card")
+    return render_template('home/card.html', form=form, current_page="user", card_list=card_list, user_tab="card")
 
 
 @homeRoute.route('/card_add', methods=['POST'])
@@ -272,7 +267,7 @@ def card_add():
 
         try:
             session = Session()
-            this_card = Card(current_user,card_num,bank)
+            this_card = Card(current_user, card_num, bank)
             session.add(this_card)
             session.commit()
             session.close()
@@ -284,6 +279,7 @@ def card_add():
         return redirect(url_for("homeRoute.card"))
     flash("Add card failed", "danger")
     return redirect(url_for("homeRoute.card"))
+
 
 @homeRoute.route('/card_update', methods=['POST'])
 @login_required
@@ -319,7 +315,8 @@ def card_update():
         return redirect(url_for("homeRoute.card"))
     return redirect(url_for("homeRoute.card"))
 
-@homeRoute.route('/card_delete/<int:card_id>',methods=['GET'])
+
+@homeRoute.route('/card_delete/<int:card_id>', methods=['GET'])
 @login_required
 def card_delete(card_id):
     session = Session()
@@ -332,3 +329,120 @@ def card_delete(card_id):
     else:
         flash(("Card is not found under user %s" % current_user.email), "danger")
     return redirect(url_for("homeRoute.card"))
+
+
+@homeRoute.route('/appointment', methods=['GET'])
+@login_required
+def appt():
+    session = Session()
+    form = ApptForm()
+    appt_list = session.query(Appt).filter(Appt.owner_id == current_user.id).all()
+    form.appt_service.choices = session.query(Service.id, Service.type).all()
+    return render_template("home/appt_list.html", form=form, appt_list=appt_list, appt_tab="my",
+                           current_page="appointment")
+
+
+@homeRoute.route('/appt_update', methods=['GET','POST'])
+@login_required
+def appt_update():
+    form = ApptForm()
+    if form.validate_on_submit():
+        id = form.id.data
+        appt_date = form.appt_date.data
+        appt_timeslot = form.appt_timeslot.data
+        appt_service = form.appt_service.data
+        try:
+            session = Session()
+            this_appt_query = session.query(Appt).filter(Appt.id == id, Appt.owner_id == current_user.id)
+            this_appt = this_appt_query.first()
+            if this_appt:
+                this_appt_query.update(
+                    {
+                        'appt_date': appt_date,
+                        'appt_timeslot_id': appt_timeslot
+                    },
+                    synchronize_session='evaluate'
+                )
+                session.query(Appt2Ser).filter(Appt2Ser.appt_id == id).delete()
+
+                for s in appt_service:
+                    appt2ser = Appt2Ser(this_appt,s)
+                    session.add(appt2ser)
+
+                session.commit()
+                session.close()
+            else:
+                flash(("Appointment is not found under user %s" % current_user.email), "danger")
+
+        except Exception as e:
+            flash("Reschedule failed", "danger")
+            flash(e)
+            redirect(url_for("homeRoute.appt"))
+
+        flash("Reschedule Successfully.", "success")
+        return redirect(url_for("homeRoute.appt"))
+
+    session = Session()
+    appt_id = request.args.get('appt_id')
+    if (appt_id):
+        appt_info = session.query(Appt).filter(Appt.id == appt_id, Appt.owner_id == current_user.id).first()
+        if(appt_info):
+            form.appt_timeslot.choices = session.query(ApptTimeSlot.id,ApptTimeSlot.slot).order_by(ApptTimeSlot.id).all()
+            selected_services = [ service.service_id for service in appt_info.appt_service ]
+
+            return render_template("home/appt_update.html",
+                                   form=form,
+                                   appt_info=appt_info,selected_services = selected_services,
+                               current_page='appointment',
+                               appt_tab="my")
+        else:
+            flash(("Appointment is not found under user %s" % current_user.email), "danger")
+            return redirect(url_for("homeRoute.appt"))
+    return redirect(url_for("homeRoute.appt"))
+
+
+@homeRoute.route('/appt_delete/<int:appt_id>', methods=['GET'])
+@login_required
+def appt_delete(appt_id):
+    session = Session()
+    this_appt = session.query(Appt).filter(Appt.id == appt_id, Appt.owner_id == current_user.id)
+    if this_appt.count() > 0:
+        this_appt.delete()
+        session.commit()
+        session.close()
+        flash(("Appointment is deleted successfully"), "success")
+    else:
+        flash(("Appointment is not found under user %s" % current_user.email), "danger")
+    return redirect(url_for("homeRoute.appt"))
+
+@homeRoute.route('/appt_add', methods=['GET','POST'])
+@login_required
+def appt_add():
+    form = ApptForm()
+    if form.validate_on_submit():
+        appt_date = form.appt_date.data
+        appt_timeslot_id = form.appt_timeslot.data
+        appt_service = form.appt_service.data
+        try:
+            session = Session()
+            new_appt = Appt(current_user.id,appt_date,appt_timeslot_id)
+            session.add(new_appt)
+            for s in appt_service:
+                appt2ser = Appt2Ser(new_appt, s)
+                session.add(appt2ser)
+
+            session.commit()
+            session.close()
+
+        except Exception  as e:
+            flash("Make appointment failed", "danger")
+            flash(e)
+            redirect(url_for("homeRoute.appt"))
+
+        flash("Reschedule Successfully.", "success")
+        return redirect(url_for("homeRoute.appt"))
+
+    return render_template("home/appt_new.html",
+                           form=form,
+                           current_page='appointment',
+                           appt_tab="new")

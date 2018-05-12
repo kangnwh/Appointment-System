@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Appointment {% endblock %}
+
+{% block content %}
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-md-3ß">
+            <ul class="nav flex-column nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link {% if appt_tab == "my" %} active {% endif %}" href="{{ url_for("homeRoute.appt") }}">My Appointments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if appt_tab == "new" %} active {% endif %}" href="{{ url_for("homeRoute.appt_add") }}">Make an Appointment</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            {% block main_content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

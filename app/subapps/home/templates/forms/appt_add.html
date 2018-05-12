@@ -1,0 +1,63 @@
+{% import "forms/_fields_macro.html" as form_macro %}
+
+
+<form action="{{ url_for('homeRoute.appt_add') }}" method="post">
+    {{ form.csrf_token }}
+{#    <div class="row">#}
+        <div class="card">
+            <div class="card-header">
+                <h4>Appointment Info</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="col-md-3 mb-2">
+                        <label for="input_{{ form.id.name }}">{{ form.id.label }} </label>
+                        {{ form_macro.render_string(form.id,readonly=True,value=0) }}
+
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="input_{{ form.appt_date.name }}">{{ form.appt_date.label }} </label>
+                        {{ form_macro.render_date(form.appt_date,class="") }}
+
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="input_{{ form.appt_timeslot.name }}">{{ form.appt_timeslot.label }} </label>
+                        <div class="input-group">
+                            {{ form_macro.render_select(form.appt_timeslot,class="") }}
+
+                        </div>
+                    </div>
+                    <script type=text/javascript>
+                        $(function () {
+
+                            function update_timeslot(data){
+                                    $("#id_appt_timeslot").children('option').remove();
+                                    $.each(data.list, function (i, item) {
+                                        $("#id_appt_timeslot").append($('<option>', {
+                                            value: item.id,
+                                            text: item.slot
+                                        }));
+                                    });
+                                    return true;
+                            }
+                            $('#id_{{ form.appt_date.name }}').bind('change', function () {
+                                $.getJSON('{{ url_for("restRoute.timeslot") }}', {
+                                    date: $('#id_{{ form.appt_date.name }}').val()
+                                }, update_timeslot);
+                                return false;
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-10 mb-3">
+                        <label for="input_{{ form.appt_service.name }}">{{ form.appt_service.label }} <br> (hold CONTROL to select multi services) </label>
+                        {{ form_macro.render_multiselect(form.appt_service,class="") }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+{#    </div>#}
+    <button type="submit" class="btn btn-primary">Reschedule</button>
+</form>

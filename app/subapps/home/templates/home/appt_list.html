@@ -1,0 +1,72 @@
+{% extends "home/appt_base.html" %}
+
+
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Appointment {% endblock %}
+
+{#{% block main_content %}#}
+{#    {% include "forms/user_profile.html" with context %}#}
+{#{% endblock %}#}
+
+{% block main_content %}
+    <div class="card ">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-9">
+                    <h4> My Appointment List </h4>
+                </div>
+                {#                <div class="col-md-3">#}
+                {#                    <div class="btn-group" role="group">#}
+                {#                        <button type="button" class="btn btn-info" data-toggle="modal"#}
+                {#                                data-target="#appt_form"#}
+                {#                                data-action="Add">#}
+                {#                            Add New Pet#}
+                {#                        </button>#}
+                {#                    </div>#}
+                {#                </div>#}
+            </div>
+
+        </div>
+        <ul class="list-group list-group-flush">
+            {% if appt_list.__len__() > 0 %}
+                {% for appt in appt_list %}
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-2">
+                                {{ appt.appt_date }}
+                            </div>
+                            <div class="col-md-2">
+                                {{ appt.appt_timeslot.slot }}
+                            </div>
+                            <div class="col-md-3">
+                                {% for mapping in appt.appt_service %}
+                                    {{ mapping.service.type }}<br>
+                                {% endfor %}
+
+                            </div>
+                            <div class="col-md-2">
+                                {{ appt.status }}<br>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="btn-group" role="group">
+                                    {% if appt.status != "Done" %}
+                                        <a class="btn btn-warning"
+                                           href="{{ url_for("homeRoute.appt_update",appt_id=appt.id) }}">
+                                            Reschedule
+                                        </a>
+                                        <a class="btn btn-danger"
+                                           href="{{ url_for("homeRoute.appt_delete",appt_id=appt.id) }}">Delete</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="list-group-item">No Appointment under this accound.</li>
+            {% endif %}
+        </ul>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% import "forms/_fields_macro.html" as form_macro %}
+
+<div class="modal fade" id="appt_form" tabindex="-1" role="dialog" aria-labelledby="apptModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Re Schedule</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for("homeRoute.appt_update") }}" method="post" id="appt_action">
+                    {{ form.csrf_token }}
+                    <div class="form-group row">
+                        <label for="input_{{ form.id.name }}"
+                               class="col-sm-4 col-form-label">{{ form.id.label }} </label>
+                        {{ form_macro.render_string(field=form.id,readonly=true) }}
+                    </div>
+                    <div class="form-group row">
+                        <label for="input_{{ form.appt_date.name }}"
+                               class="col-sm-4 col-form-label">{{ form.appt_date.label }} </label>
+                        {{ form_macro.render_date(form.appt_date) }}
+                    </div>
+                    <div class="form-group row">
+                        <label for="input_{{ form.appt_timeslot.name }}"
+                               class="col-sm-4 col-form-label">{{ form.appt_timeslot.label }} </label>
+                        {{ form_macro.render_string(form.appt_timeslot) }}
+                    </div>
+                    <div class="form-group row">
+                        <label for="input_{{ form.appt_service.name }}"
+                               class="col-sm-4 col-form-label">{{ form.appt_service.label }} </label>
+                        {{ form_macro.render_string(form.appt_service) }}
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="modal-submit">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
