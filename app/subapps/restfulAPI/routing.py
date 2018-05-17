@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Blueprint, request, jsonify
+import json
 
 from app.models import *
 from app.utli.forms import *
@@ -17,5 +18,5 @@ def timeslot():
     not_available = session.query(Appt.appt_timeslot_id).filter(Appt.appt_date == date).all()
     not_in = [value for value, in not_available]
     available = session.query(ApptTimeSlot.id,ApptTimeSlot.slot).filter(~ApptTimeSlot.id.in_(not_in)).all()
-    return jsonify(list = available)
+    return json.dumps({"list":available})
 
