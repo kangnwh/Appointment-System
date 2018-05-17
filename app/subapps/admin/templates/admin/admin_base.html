@@ -31,6 +31,10 @@
                     <a class="nav-link {% if current_page == 'admin' %}btn btn-success{% endif %}"
                        href="{{ url_for('adminRoute.administrator') }}">Administrator</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if current_page == 'admin' %}btn btn-success{% endif %}"
+                       href="{{ url_for('homeRoute.index') }}">Back_To_Home</a>
+                </li>
             </ul>
             {% if current_user.is_authenticated %}
                 <div class="dropdown">
