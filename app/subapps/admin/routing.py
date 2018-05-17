@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime as dt
 from functools import wraps
+import hashlib
 
 from flask import Blueprint, request, url_for, jsonify, redirect, current_app as app
 from flask import render_template, flash, render_template_string
@@ -156,10 +157,9 @@ def administrator():
         gender = form.gender.data
         dob = form.dob.data
 
-        # md5 = hashlib.md5()
-        # md5.update(form.password.data.encode('utf-8')) # TODO encrypt password
-        # password = md5.hexdigest()
-        # password = form.password.data
+        md5 = hashlib.md5()
+        md5.update(form.password.data.encode('utf-8'))
+        password = md5.hexdigest()
 
         try:
             session = Session()
@@ -233,6 +233,12 @@ def appt_by_date():
         appt_dict["address"] = appt.owner.address.to_html()
         appt_dict["time"] = appt.appt_timeslot.slot
         appt_dict["status"] = appt.status
+        pet_info = dict()
+        pet_info["name"] = appt.pet.name
+        pet_info["breed"] = appt.pet.breed
+        pet_info["gender"] = appt.pet.gender
+        pet_info["dob"] = appt.pet.dob
+        appt_dict["pet"] = pet_info
         services = list()
         for s in appt.appt_service:
             services.append(s.service.type)

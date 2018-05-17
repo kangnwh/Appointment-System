@@ -3,7 +3,7 @@ from wtforms import PasswordField, StringField, IntegerField, DateField, SelectF
     FloatField
 from wtforms.validators import DataRequired, EqualTo, Email, ValidationError
 from app.db_info import Session
-from app.models import User, Service, ApptTimeSlot
+from app.models import User, Service, ApptTimeSlot,Pet
 from flask_login import current_user
 
 
@@ -88,9 +88,20 @@ class ApptForm(Form):
     appt_timeslot = NoValidationSelectField("Time Slot", coerce=int, choices=[(1, "Select date first")])
     appt_service = SelectMultipleField("Services", coerce=int,
                                        choices=Session().query(Service.id, Service.type, Service.desc).all())
+    pet = NoValidationSelectField("Pet to Serve",coerce=int, choices=[],validators=[DataRequired()])
 
     def pre_validate(self, form):
         pass
+
+    # def __init__(self):
+    #     self.id = IntegerField("Appointment ID")
+    #     self.appt_date = DateField("Appointment Date")
+    #     self.appt_timeslot = NoValidationSelectField("Time Slot", coerce=int, choices=[(1, "Select date first")])
+    #     self.appt_service = SelectMultipleField("Services", coerce=int,
+    #                 choices=Session().query(Service.id, Service.type, Service.desc).all())
+    #     self.pet = SelectField("Pet to Serve", coerce=int,
+    #                       choices=Session().query(Pet.id, Pet.name).filter(Pet.owner_id == current_user.id).all(),
+    #                       validators=[DataRequired()])
 
 
 class ServiceForm(Form):

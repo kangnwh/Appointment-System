@@ -10,22 +10,26 @@
             </div>
             <div class="card-body">
                 <div class="form-row">
-                    <div class="col-md-3 mb-2">
+                    <div class="col-md-2 mb-2" hidden>
                         <label for="input_{{ form.id.name }}">{{ form.id.label }} </label>
                         {{ form_macro.render_string(form.id,readonly=True,value=0) }}
 
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label for="input_{{ form.appt_date.name }}">{{ form.appt_date.label }} </label>
                         {{ form_macro.render_date(form.appt_date,class="",begin_date="+1") }}
 
                     </div>
-                    <div class="col-md-4 mb-3">
+
+                    <div class="col-md-3 mb-3">
                         <label for="input_{{ form.appt_timeslot.name }}">{{ form.appt_timeslot.label }} </label>
                         <div class="input-group">
                             {{ form_macro.render_select(form.appt_timeslot,class="") }}
-
                         </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="input_{{ form.pet.name }}">{{ form.pet.label }} </label>
+                        {{ form_macro.render_select(form.pet,class="") }}
                     </div>
                     <script type=text/javascript>
                         $(function () {

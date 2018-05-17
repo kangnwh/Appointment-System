@@ -26,14 +26,12 @@ def login():
         email = form.email.data
         md5 = hashlib.md5()
         md5.update(form.password.data.encode('utf-8'))
-        # password = md5.hexdigest()
-        password = form.password.data
+        password = md5.hexdigest()
         user = User.query.filter_by(email=email, password=password).first()
         if user:
             login_user(user, remember=True)
             flash("Login Successfully.", "success")
             next = request.args.get('next')
-            print(next)
             return redirect(next or url_for('homeRoute.index'))
 
         else:
@@ -69,7 +67,7 @@ def pet_add():
 
         try:
             session = Session()
-            this_pet = Pet(current_user.id, name, breed, gender, dob)
+            this_pet = Pet(current_user, name, breed, gender, dob)
             session.add(this_pet)
             session.commit()
             session.close()
@@ -221,10 +219,11 @@ def register():
         phone = form.phone.data
         home_numaber = form.home_number.data
         work_number = form.work_number.data
-        # md5 = hashlib.md5()
-        # md5.update(form.password.data.encode('utf-8'))  # TODO encrypt password
-        # password = md5.hexdigest()
-        password = form.password.data
+
+        md5 = hashlib.md5()
+        md5.update(form.password.data.encode('utf-8'))
+        password = md5.hexdigest()
+
         user = User(email=email, password=password, first_name=first_name, last_name=last_name, dob=dob, gender=gender,
                     address=address, phone=phone, home_number=home_numaber, work_number=work_number)
 
@@ -351,6 +350,7 @@ def appt_update():
         appt_date = form.appt_date.data
         appt_timeslot = form.appt_timeslot.data
         appt_service = form.appt_service.data
+        pet_id = form.pet.data
         try:
             session = Session()
             this_appt_query = session.query(Appt).filter(Appt.id == id, Appt.owner_id == current_user.id)
@@ -359,7 +359,8 @@ def appt_update():
                 this_appt_query.update(
                     {
                         'appt_date': appt_date,
-                        'appt_timeslot_id': appt_timeslot
+                        'appt_timeslot_id': appt_timeslot,
+                        'pet_id':pet_id
                     },
                     synchronize_session='evaluate'
                 )
@@ -389,6 +390,7 @@ def appt_update():
         if(appt_info):
             form.appt_timeslot.choices = session.query(ApptTimeSlot.id,ApptTimeSlot.slot).order_by(ApptTimeSlot.id).all()
             selected_services = [ service.service_id for service in appt_info.appt_service ]
+            form.pet.choices = session.query(Pet.id, Pet.name).filter(Pet.owner_id == current_user.id).all()
 
             return render_template("home/appt_update.html",
                                    form=form,
@@ -423,9 +425,10 @@ def appt_add():
         appt_date = form.appt_date.data
         appt_timeslot_id = form.appt_timeslot.data
         appt_service = form.appt_service.data
+        pet_id = form.pet.data
         try:
             session = Session()
-            new_appt = Appt(current_user.id,appt_date,appt_timeslot_id)
+            new_appt = Appt(current_user.id,pet_id,appt_date,appt_timeslot_id)
             session.add(new_appt)
             for s in appt_service:
                 appt2ser = Appt2Ser(new_appt, s)
@@ -442,6 +445,8 @@ def appt_add():
         flash("Reschedule Successfully.", "success")
         return redirect(url_for("homeRoute.appt"))
 
+    session = Session()
+    form.pet.choices = session.query(Pet.id,Pet.name).filter(Pet.owner_id == current_user.id).all()
     return render_template("home/appt_new.html",
                            form=form,
                            current_page='appointment',

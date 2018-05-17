@@ -12,7 +12,7 @@
             <div class="modal-body">
                 <form action="{{ url_for("homeRoute.pet_update") }}" method="post" id="pet_action">
                     {{ form.csrf_token }}
-                    <div class="form-group row">
+                    <div class="form-group row hidden">
                         <label for="input_{{ form.id.name }}"
                                class="col-sm-4 col-form-label">{{ form.id.label }} </label>
                         {{ form_macro.render_string(form.id,readonly=true) }}

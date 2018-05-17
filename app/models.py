@@ -143,6 +143,10 @@ class Appt(db.Model):
                          nullable=False)
     owner = db.relationship('User',
                             backref=db.backref('appts', lazy=True), foreign_keys=[owner_id])
+    pet_id = db.Column(db.Integer, db.ForeignKey('Pet.id'),
+                         nullable=False)
+    pet = db.relationship('Pet',
+                            backref=db.backref('appts', lazy=True), foreign_keys=[pet_id])
     appt_date = db.Column(db.DATE)
     appt_timeslot_id = db.Column(db.Integer, db.ForeignKey('ApptTimeSlot.id'),
                          nullable=False)
@@ -151,8 +155,9 @@ class Appt(db.Model):
     status = db.Column(db.String(10),default="Submitted")
     update_date = db.Column(db.DATE,default=datetime.now)
 
-    def __init__(self,owner_id,appt_date,appt_timeslot_id):
+    def __init__(self,owner_id,pet_id,appt_date,appt_timeslot_id):
         self.owner_id = owner_id
+        self.pet_id = pet_id
         self.appt_date = appt_date
         self.appt_timeslot_id = appt_timeslot_id
 

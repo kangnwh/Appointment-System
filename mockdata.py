@@ -2,6 +2,7 @@ from app.manage import db, app
 from app.models import *
 from app.db_info import Session
 import datetime as dt
+import hashlib
 
 SERVICES = [
     ["Grooming", "Description for this service", 15],
@@ -27,13 +28,19 @@ def mock_user_pet():
     with app.app_context():
         session = Session()
         address = Address("Melbourne", "Queen", 3000)
-        tom = User(email="tom@pet.com", password="pwd", first_name="Tom", last_name="Unimelb", dob=dt.date(1989, 9, 8),
+
+        md5 = hashlib.md5()
+        md5.update("pwd".encode('utf-8'))
+        password = md5.hexdigest()
+
+
+        tom = User(email="tom@pet.com", password=password, first_name="Tom", last_name="Unimelb", dob=dt.date(1989, 9, 8),
                    gender="M", phone="000000", home_number="000000", work_number="000000",
                    address=address, active=True, admin=True, register_date=dt.datetime.now())
-        user1 = User(email="user1@12.com", password="pwd", first_name="User1", last_name="Unimelb",
+        user1 = User(email="user1@12.com", password=password, first_name="User1", last_name="Unimelb",
                      dob=dt.date(1999, 12, 8), gender="M", phone="000000", home_number="000000", work_number="000000",
                      address=address, active=True, admin=False, register_date=dt.datetime.now())
-        user2 = User(email="user2@12.com", password="pwd", first_name="User2", last_name="Unimelb",
+        user2 = User(email="user2@12.com", password=password, first_name="User2", last_name="Unimelb",
                      dob=dt.date(1988, 7, 17), gender="F", phone="000000", home_number="000000", work_number="000000",
                      address=address, active=True, admin=False, register_date=dt.datetime.now())
 
@@ -81,15 +88,15 @@ def mock_appt_bill():
     with app.app_context():
         session = Session()
         appts = [
-            [2,dt.date(2018, 7, 17),2, [1,2]],
-            [2, dt.date(2018, 7, 18), 3,[2,3]],
-            [2, dt.date(2018, 7, 19), 1,[1,4]],
+            [2, 1, dt.date(2018, 7, 17), 2,[1,2]],
+            [2, 1, dt.date(2018, 7, 18), 3,[2,3]],
+            [2, 1, dt.date(2018, 7, 19), 1,[1,4]],
         ]
         for a in appts:
-            appt = Appt(a[0],a[1],a[2])
+            appt = Appt(a[0],a[1],a[2],a[3])
             session.add(appt)
             total_fee = 0
-            for s in a[3]:
+            for s in a[4]:
                 appt_service = Appt2Ser(appt, s)
                 total_fee += SERVICES[s][2]
                 session.add(appt_service)
