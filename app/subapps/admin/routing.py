@@ -230,7 +230,7 @@ def appt_by_date():
         appt_dict["id"] = appt.id
         appt_dict["user"] = appt.owner.first_name
         appt_dict["phone"] = appt.owner.phone
-        appt_dict["address"] = appt.owner.address.__str__()
+        appt_dict["address"] = appt.owner.address.to_html()
         appt_dict["time"] = appt.appt_timeslot.slot
         appt_dict["status"] = appt.status
         services = list()

@@ -17,6 +17,8 @@ class Address(db.Model):
     def __str__(self):
         return "{street},{city},{post}".format(street=self.street,city=self.city,post=self.post_code)
 
+    def to_html(self):
+        return "{street}</br>{city}</br>{post}".format(street=self.street,city=self.city,post=self.post_code)
 
 class User(db.Model):
     __tablename__ = 'User'
