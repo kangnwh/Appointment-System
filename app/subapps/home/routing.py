@@ -341,7 +341,7 @@ def appt():
                            current_page="appointment")
 
 
-@homeRoute.route('/appt_update', methods=['GET','POST'])
+@homeRoute.route('/appt_update/', methods=['GET','POST'])
 @login_required
 def appt_update():
     form = ApptForm()

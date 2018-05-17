@@ -23,29 +23,31 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-md-2">
-                                {{ appt.appt_date }}
+                                    <span class="badge badge-success">{{ appt.appt_date }}</span>
                             </div>
                             <div class="col-md-2">
-                                {{ appt.appt_timeslot.slot }}
+                                    <span class="badge badge-success">{{ appt.appt_timeslot.slot }}</span>
                             </div>
                             <div class="col-md-3">
                                 {% for mapping in appt.appt_service %}
-                                    {{ mapping.service.type }}<br>
+                                    <span class="badge badge-success">{{ mapping.service.type }}</span>
                                 {% endfor %}
 
                             </div>
                             <div class="col-md-2">
-                                {{ appt.status }}<br>
+                                <span class="badge badge-{% if appt.status == "Done" %}primary{% else %}warning{% endif %}">
+                                    {{ appt.status }}
+                                </span>
                             </div>
 
                             <div class="col-md-3">
-                                <div class="btn-group" role="group">
+                                <div class="btn-group" role="group" >
                                     {% if appt.status != "Done" %}
-                                        <a class="btn btn-warning"
+                                        <a class="btn btn-warning" style="font-size: 14px;"
                                            href="{{ url_for("homeRoute.appt_update",appt_id=appt.id) }}">
                                             Reschedule
                                         </a>
-                                        <a class="btn btn-danger"
+                                        <a class="btn btn-danger" style="font-size: 14px;"
                                            href="{{ url_for("homeRoute.appt_delete",appt_id=appt.id) }}">Delete</a>
                                     {% endif %}
                                 </div>

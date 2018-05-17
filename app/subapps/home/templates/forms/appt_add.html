@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="input_{{ form.appt_date.name }}">{{ form.appt_date.label }} </label>
-                        {{ form_macro.render_date(form.appt_date,class="") }}
+                        {{ form_macro.render_date(form.appt_date,class="",begin_date="+1") }}
 
                     </div>
                     <div class="col-md-4 mb-3">

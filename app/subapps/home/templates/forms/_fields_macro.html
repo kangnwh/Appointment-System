@@ -96,14 +96,22 @@
 {% endmacro %}
 
 
-{% macro render_date(field=None,value="",class='col-sm-8') -%}
+{% macro render_date(field=None,value="",class='col-sm-8',begin_date=None) -%}
 
     <div class="{{ class }}">
         <input type="text" value="{{ value }}" readonly class=" form-control {{ field.name }}"
-               name="{{ field.name }}" id="id_{{ field.name }}" data-date-format="yyyy-mm-dd ">
+               name="{{ field.name }}" id="id_{{ field.name }}" data-date-format="yyyy-mm-dd">
         <script type="text/javascript">
             $(function () {
-                $("#id_{{ field.name }}").datepicker({format: 'yyyy-mm-dd', autoclose: true});
+                $("#id_{{ field.name }}").datepicker(
+                    {
+                        format: 'yyyy-mm-dd', 
+                        autoclose: true,
+                        {% if begin_date != None %} 
+                            startDate: '{{begin_date}}d',
+                        {% endif %}
+                        }
+                    );
             });
         </script>
     </div>
