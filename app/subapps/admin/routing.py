@@ -37,12 +37,13 @@ def index():
 @admin_only
 def appt():
     today = dt.date.today()
+    date = request.args.get("date",today)
     session = Session()
     form = ApptForm()
-    appt_list = session.query(Appt).filter(Appt.appt_date == today).all()
+    appt_list = session.query(Appt).filter(Appt.appt_date == date).all()
 
     form.appt_service.choices = session.query(Service.id, Service.type).all()
-    return render_template("admin/appt.html", form=form, appt_list=appt_list, current_page="appt")
+    return render_template("admin/appt.html", form=form, appt_list=appt_list, current_page="appt",date=date)
 
 
 @adminRoute.route('/service', methods=['GET', 'POST'])
@@ -245,4 +246,10 @@ def appt_by_date():
 @login_required
 @admin_only
 def appt_finish():
-    pass
+    appt_id = request.args.get("appt_id")
+    date = request.args.get("date")
+    session = Session()
+    session.query(Appt).filter(Appt.id == appt_id).update({"status":"Done"})
+    session.commit()
+    session.close()
+    return redirect(url_for("adminRoute.appt",date=date))

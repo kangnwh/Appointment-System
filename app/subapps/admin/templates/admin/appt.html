@@ -1,40 +1,35 @@
-{% extends "admin/admin_base.html" %}
-
-{% block title %} {{ config.DEFAULT_APP_NAME }} - Appointment Admin {% endblock %}
-
-
+{% extends "admin/admin_base.html" %} {% block title %} {{ config.DEFAULT_APP_NAME }} - Appointment Admin {% endblock %}
 {% block content %}
-    <div class="card ">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-md-4">
-                    <h4> My Appointment List </h4>
-                </div>
-
-
-                <div class="col-md-3">
-                    <div class="input-group input-group-default">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
-                        </div>
-                         <input type="text" readonly class=" form-control" style="background-color: #2e6da4;color:#fff;"
-                           id="id_date_filter" data-date-format="yyyy-mm-dd"
-                           value="{{ config['today'].strftime("%Y-%m-%d") }}">
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $("#id_date_filter").datepicker({format: 'yyyy-mm-dd', autoclose: true});
-                        });
-                    </script>
-                </div>
-
-
+<div class="card ">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-4">
+                <h4> My Appointment List </h4>
             </div>
 
-        </div>
-        <ul class="list-group list-group-flush" id="appt_list">
 
-            {% if appt_list.__len__() > 0 %}
+            <div class="col-md-3">
+                <div class="input-group input-group-default">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
+                    </div>
+                    <input type="text" readonly class=" form-control" style="background-color: #2e6da4;color:#fff;" id="id_date_filter" data-date-format="yyyy-mm-dd"
+                        value="{{ date }}">
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $("#id_date_filter").datepicker({ format: 'yyyy-mm-dd', autoclose: true });
+                    });
+                </script>
+            </div>
+
+
+        </div>
+
+    </div>
+    <ul class="list-group list-group-flush" id="appt_list">
+        
+        <!-- {% if appt_list.__len__() > 0 %}
                 {% for appt in appt_list %}
                     <li class="list-group-item">
                         <div class="row">
@@ -58,11 +53,11 @@
                                 <div class="btn-group" role="group">
                                     {% if appt.status != "Done" %}
                                         <a class="btn btn-warning"
-                                           href="{{ url_for("homeRoute.appt_finish",appt_id=id) }}">
+                                           href="#">
                                             Reschedule
                                         </a>
                                         <a class="btn btn-danger"
-                                           href="{{ url_for("homeRoute.appt_delete",appt_id=id) }}">Delete</a>
+                                           href="#">Delete</a>
                                     {% endif %}
                                 </div>
                             </div>
@@ -71,22 +66,34 @@
                 {% endfor %}
             {% else %}
                 <li class="list-group-item">No Appointment today.</li>
-            {% endif %}
+            {% endif %} -->
 
-        </ul>
-    </div>
-    <script type=text/javascript>
+    </ul>
+</div>
+<script type=text/javascript>
         $(function () {
             function appt_li(item) {
-                const url_pre = '{{ url_for("adminRoute.appt_finish") }}';
-                return '<li class="list-group-item"><div class="row">'
+                const url_pre = '{{ url_for("adminRoute.appt_finish") }}'+"?appt_id="+item.id+"&date=" + $('#id_date_filter').val();
+                console.log(url_pre);
+                console.log(item.status);
+                let html = '<li class="list-group-item"><div class="row">'
                     + '<div class="col-md-2">' + item.user + '<br>' + item.phone
                     + '</div><div class="col-md-2">' + item.address
-                    + '</div><div class="col-md-2">' + item.time
-                    + '</div><div class="col-md-2">' + item.services
-                    + '</div><div class="col-md-2">' + status
-                    + '</div><div class="col-md-2"><div class="btn-group" role="group"><a class="btn btn-warning" href="' + url_pre + item.id
-                    + '"> Finish </a><a class="btn btn-danger" href="#">Delete</a></div></div></div></li>';
+                    + '</div><div class="col-md-2"><span class="badge badge-success">' + item.time
+                    + '</span></div><div class="col-md-2"><ul class="list-group">' ;
+                item.services.forEach(element => {
+                    html += ' <li class="list-group-item" style="padding:0px;font-size:12px;"><span class="badge badge-success">'+ element +'</span></li>'
+                });
+                html+= '</ul></div>'
+                    if(item.status == "Done"){
+                        html+='<div class="col-md-2"><span class="badge badge-success">' + item.status
+                        + '</span></div><div class="col-md-2"><div class="btn-group" role="group"><a class="btn btn-primary disabled" href="#"> Finished </a>';
+                    }else{
+                        html+='<div class="col-md-2"><span class="badge badge-warning">' + item.status
+                        + '</span></div><div class="col-md-2"><div class="btn-group" role="group"><a class="btn btn-primary" href="' + url_pre 
+                    + '"> Finish </a>'
+                    }
+                    return html;
             }
 
             function update_appt_list(data) {
@@ -109,8 +116,13 @@
                 }, update_appt_list);
                 return false;
             });
+
+            $(function () {
+                    $.getJSON('{{ url_for("adminRoute.appt_by_date") }}', {
+                        date: $('#id_date_filter').val()
+                    }, update_appt_list);
+                    return false;
+            });
         });
 
-    </script>
-
-{% endblock %}
+    </script> {% endblock %}
