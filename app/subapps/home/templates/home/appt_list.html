@@ -23,14 +23,12 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-md-2">
-                                    <span class="badge badge-success">{{ appt.appt_date }}</span>
-                            </div>
-                            <div class="col-md-2">
-                                    <span class="badge badge-success">{{ appt.appt_timeslot.slot }}</span>
+                                    <span class="badge badge-primary">{{ appt.appt_date }}<br>
+                                    {{ appt.appt_timeslot.slot }}</span>
                             </div>
                             <div class="col-md-3">
                                 {% for mapping in appt.appt_service %}
-                                    <span class="badge badge-success">{{ mapping.service.type }}</span>
+                                    <span class="badge badge-primary">{{ mapping.service.type }}</span>
                                 {% endfor %}
 
                             </div>
@@ -48,7 +46,7 @@
                                             Reschedule
                                         </a>
                                         <a class="btn btn-danger" style="font-size: 14px;"
-                                           href="{{ url_for("homeRoute.appt_delete",appt_id=appt.id) }}">Delete</a>
+                                           href="{{ url_for("homeRoute.appt_delete",appt_id=appt.id) }}">Cancel</a>
                                     {% endif %}
                                 </div>
                             </div>
