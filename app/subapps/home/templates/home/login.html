@@ -1,17 +1,33 @@
-
-
-{% extends 'base.html' %}
-
-{% block title %} {{ config.DEFAULT_APP_NAME }} - Login {% endblock %}
-
-{% block content %}
+ {% extends 'base.html' %} {% block title %} {{ config.DEFAULT_APP_NAME }} - Login {% endblock %} {% block content %}
 <div class="row" style="padding-top: 50px;">
-    <div class="col-md-6 offset-md-3">
-        <h5>Demo User</h5>
-        <p>email:   user1@12.com</p>
-        <p>password: pwd</p>
-    {% include "forms/login_form.html" with context %}
+    <div class="col-md-4 offset-md-1">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Demo User</h5>
+                <p class="card-text">email: user1@12.com
+                    <br>password: pwd</p>
+                <a href="#" class="btn btn-primary btn-sm" onclick="useAccount('user1@12.com','pwd')">Use this account</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Demo Admin</h5>
+                <p class="card-text">email: tom@pet.com
+                    <br>password: pwd</p>
+                <a href="#" class="btn btn-primary btn-sm" onclick="useAccount('tom@pet.com','pwd')">Use this account</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-5">
+        {% include "forms/login_form.html" with context %}
     </div>
 </div>
+<script>
+    function useAccount(email,pwd){
+        $("#id_email").val(email);
+        $("#id_password").val(pwd);
+    }
+</script>
 
 {% endblock %}

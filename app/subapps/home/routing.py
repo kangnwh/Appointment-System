@@ -33,12 +33,13 @@ def login():
             login_user(user, remember=True)
             flash("Login Successfully.", "success")
             next = request.args.get('next')
+            print(next)
             return redirect(next or url_for('homeRoute.index'))
 
         else:
             flash("User ID or Password invalid.", "danger")
-
-    return render_template('home/login.html', form=form)
+    next = request.args.get('next')
+    return render_template('home/login.html', form=form,next=next)
 
 
 @homeRoute.route('/logout')

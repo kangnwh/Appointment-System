@@ -1,17 +1,19 @@
-{% extends "base.html" %}
-{% block title %} {{ config.DEFAULT_APP_NAME }} - Home {% endblock %}
-
-{% block before_content %}
+{% extends "base.html" %} {% block title %} {{ config.DEFAULT_APP_NAME }} - Home {% endblock %} {% block before_content %}
 <div class="jumbotron">
     <h1 class="display-4">Appoint A Grooming Service Here!</h1>
     <p class="lead">This is a simple appointment system for Tom's pet grooming service.</p>
     <hr class="my-4">
-    <p>Learn more about Tom's service and make an appointment.</p>
-    <p class="lead">
-{#        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>#}
-    </p>
+    <a href="https://app.lms.unimelb.edu.au/bbcswebdav/pid-6262890-dt-content-rid-35282059_2/courses/SWEN90016_2018_SM1/SWEN900016_Group_Spec_v.0.10_final%282%29.pdf"
+        target="_blank" class="btn btn-primary">Learn more about Tom's service and make an appointment.</a>
 </div>
-{% endblock %}
-
-{% block content %}
-{% endblock %}
+<div class="card">
+    <div class="card-header">
+        This is an assignment side project for SPM 2018!
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Powered by Team E05</h5>
+        <p class="card-text">This project is about project process and management, this websit is a side project to let use use management skills of this subject.</p>
+        <a href="https://handbook.unimelb.edu.au/2018/subjects/swen90016/"  target="_blank" class="btn btn-primary">Know More About This Subject!</a>
+    </div>
+</div>
+{% endblock %} {% block content %} {% endblock %}

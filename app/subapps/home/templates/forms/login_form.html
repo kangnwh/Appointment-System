@@ -1,7 +1,7 @@
 {% import "forms/_fields_macro.html" as form_macro %}
 
 
-<form action="{{ url_for('homeRoute.login') }}" method="post">
+<form action="{{ url_for('homeRoute.login',next=next) }}" method="post">
     {{ form.csrf_token }}
     <div class="card">
         <div class="card-header">
