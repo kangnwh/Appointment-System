@@ -2,23 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94fe0d93-44d5-41d7-91c5-12b343ba694f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/static/myScript.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/subapps/admin/templates/admin/_appt_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.db" afterPath="$PROJECT_DIR$/app/app.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models.py" afterPath="$PROJECT_DIR$/app/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/admin/routing.py" afterPath="$PROJECT_DIR$/app/subapps/admin/routing.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/admin/templates/admin/_appt_list.html" afterPath="$PROJECT_DIR$/app/subapps/admin/templates/admin/_appt_list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/admin/templates/admin/appt.html" afterPath="$PROJECT_DIR$/app/subapps/admin/templates/admin/appt.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/routing.py" afterPath="$PROJECT_DIR$/app/subapps/home/routing.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/forms/_fields_macro.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/forms/_fields_macro.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/forms/appt_add.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/forms/appt_add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/forms/appt_update.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/forms/appt_update.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/home/_pet_modal.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/home/_pet_modal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/subapps/home/templates/home/appt_list.html" afterPath="$PROJECT_DIR$/app/subapps/home/templates/home/appt_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/base.html" afterPath="$PROJECT_DIR$/app/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/utli/forms.py" afterPath="$PROJECT_DIR$/app/utli/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockdata.py" afterPath="$PROJECT_DIR$/mockdata.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="app/app.db" />
@@ -32,7 +19,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/MyDWTool$MyDWTool.coverage" NAME="MyDWTool Coverage Results" MODIFIED="1525215893720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AppointmentSys$ApptSys.coverage" NAME="ApptSys Coverage Results" MODIFIED="1525313061788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AppointmentSys-flask$flask.coverage" NAME="flask Coverage Results" MODIFIED="1526600460043" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/AppointmentSys-flask$flask.coverage" NAME="flask Coverage Results" MODIFIED="1526612365135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -47,136 +34,92 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/subapps/admin/routing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="240" column="35" lean-forward="false" selection-start-line="240" selection-start-column="35" selection-end-line="240" selection-end-column="35" />
-              <folding>
-                <element signature="e#24#45#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="appt_add.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/forms/appt_add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="31" column="54" lean-forward="false" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
-              <folding>
-                <marker date="1526561544207" expanded="true" signature="120:3167" ph="..." />
-                <marker date="1526561544207" expanded="true" signature="199:3076" ph="..." />
-                <marker date="1526561544207" expanded="true" signature="334:3061" ph="..." />
-                <marker date="1526561544207" expanded="true" signature="373:2659" ph="..." />
-                <marker date="1526561544207" expanded="true" signature="428:633" ph="..." />
-                <marker date="1526561544207" expanded="true" signature="1314:1508" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/subapps/home/routing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="422" column="0" lean-forward="false" selection-start-line="422" selection-start-column="0" selection-end-line="422" selection-end-column="0" />
-              <folding>
-                <element signature="e#24#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/flask_login/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="227" column="0" lean-forward="false" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="appt_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/home/appt_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="35" column="50" lean-forward="false" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
-              <folding>
-                <marker date="1526561504798" expanded="true" signature="273:2890" ph="..." />
-                <marker date="1526561504798" expanded="true" signature="534:2879" ph="..." />
-                <marker date="1526561504798" expanded="true" signature="672:2705" ph="..." />
-                <marker date="1526561504798" expanded="true" signature="714:2679" ph="..." />
-                <marker date="1526561504798" expanded="true" signature="1330:1514" ph="..." />
-                <marker date="1526561504798" expanded="true" signature="1383:1479" ph="..." />
-                <marker date="1526561504798" expanded="true" signature="1871:2648" ph="..." />
-                <marker date="1526561504798" expanded="true" signature="1940:2613" ph="..." />
-                <marker date="1526561504798" expanded="true" signature="2107:2312" ph="..." />
-                <marker date="1526561504798" expanded="true" signature="2411:2526" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="appt_update.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/forms/appt_update.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="30" column="92" lean-forward="false" selection-start-line="30" selection-start-column="92" selection-end-line="30" selection-end-column="92" />
-              <folding>
-                <marker date="1526561608461" expanded="true" signature="123:3252" ph="..." />
-                <marker date="1526561608461" expanded="true" signature="176:3174" ph="..." />
-                <marker date="1526561608461" expanded="true" signature="311:3159" ph="..." />
-                <marker date="1526561608461" expanded="true" signature="350:2725" ph="..." />
-                <marker date="1526561608461" expanded="true" signature="1361:1578" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="appt.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/subapps/admin/templates/admin/appt.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="59" column="14" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="59" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_appt_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/subapps/admin/templates/admin/_appt_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pet_form.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/forms/pet_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_pet_modal.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/home/_pet_modal.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="14" column="53" lean-forward="false" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.6164109">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="routing.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/subapps/admin/routing.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="372">
+                  <caret line="264" column="33" lean-forward="false" selection-start-line="264" selection-start-column="29" selection-end-line="264" selection-end-column="33" />
+                  <folding>
+                    <element signature="e#24#45#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="appt.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/subapps/admin/templates/admin/appt.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="285">
+                  <caret line="19" column="81" lean-forward="true" selection-start-line="19" selection-start-column="81" selection-end-line="19" selection-end-column="81" />
+                  <folding>
+                    <element signature="e#697#721#0#HTML" expanded="true" />
+                    <element signature="e#872#917#0#HTML" expanded="true" />
+                    <element signature="e#1749#1773#0#HTML" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_appt_list.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/subapps/admin/templates/admin/_appt_list.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="485">
+                  <caret line="47" column="61" lean-forward="false" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="appt_add.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/forms/appt_add.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="53" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_pet_modal.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/home/_pet_modal.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="150">
+                  <caret line="14" column="53" lean-forward="false" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_fields_macro.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/forms/_fields_macro.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-945">
+                  <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/models.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="435">
+                  <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -200,7 +143,13 @@
       <find>\} +&lt;</find>
       <find>pet_form</find>
       <find>succ</find>
+      <find>appt_by</find>
       <find>appt_add</find>
+      <find>\{\{ .* \}\}</find>
+      <find>appt_finish</find>
+      <find>primary</find>
+      <find>appt\(</find>
+      <find>h5</find>
     </findStrings>
     <replaceStrings>
       <replace>,&quot;Description for this service&quot;,15],\n</replace>
@@ -208,6 +157,9 @@
       <replace>{</replace>
       <replace>}&lt;</replace>
       <replace>service_form</replace>
+      <replace>Info</replace>
+      <replace>{{ appt.get(&quot;&quot;) }}</replace>
+      <replace>h6</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -257,12 +209,13 @@
         <option value="$PROJECT_DIR$/app/subapps/home/templates/forms/appt_add.html" />
         <option value="$PROJECT_DIR$/app/subapps/home/templates/forms/appt_update.html" />
         <option value="$PROJECT_DIR$/app/subapps/home/routing.py" />
-        <option value="$PROJECT_DIR$/app/subapps/admin/routing.py" />
         <option value="$PROJECT_DIR$/app/static/myScript.js" />
         <option value="$PROJECT_DIR$/app/templates/base.html" />
         <option value="$PROJECT_DIR$/app/subapps/home/templates/home/_pet_modal.html" />
-        <option value="$PROJECT_DIR$/app/subapps/admin/templates/admin/appt.html" />
         <option value="$PROJECT_DIR$/app/subapps/admin/templates/admin/_appt_list.js" />
+        <option value="$PROJECT_DIR$/app/subapps/admin/routing.py" />
+        <option value="$PROJECT_DIR$/app/subapps/admin/templates/admin/_appt_list.html" />
+        <option value="$PROJECT_DIR$/app/subapps/admin/templates/admin/appt.html" />
       </list>
     </option>
   </component>
@@ -274,8 +227,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="790" />
+    <option name="width" value="1920" />
+    <option name="height" value="970" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -431,6 +384,84 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppointmentSys-flask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppointmentSys-flask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppointmentSys-flask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppointmentSys-flask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppointmentSys-flask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppointmentSys-flask" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -494,7 +525,7 @@
     <property name="nodejs_interpreter_path" value="/usr/local/Cellar/node/8.7.0/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="SearchEverywhereHistoryKey" value="rou&#9;FILE&#9;file:///Users/eric/Documents/projects/AppointmentSys-flask/app/subapps/admin/routing.py&#10;admin&#9;FILE&#9;file:///Users/eric/Documents/projects/AppointmentSys-flask/app/subapps/admin/templates/admin/admin_base.html" />
+    <property name="SearchEverywhereHistoryKey" value="list&#9;FILE&#9;file:///Users/eric/Documents/projects/AppointmentSys-flask/app/subapps/admin/templates/admin/_appt_list.html&#10;rou&#9;FILE&#9;file:///Users/eric/Documents/projects/AppointmentSys-flask/app/subapps/admin/routing.py&#10;admin&#9;FILE&#9;file:///Users/eric/Documents/projects/AppointmentSys-flask/app/subapps/admin/templates/admin/admin_base.html" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -824,26 +855,33 @@
       <option name="project" value="LOCAL" />
       <updated>1526134633698</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="upate for admin appt list ui">
+      <created>1526600848736</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1526600848736</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="790" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="970" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.2357631" sideWeight="0.5106496" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24714285" sideWeight="0.48640916" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272727" sideWeight="0.48189563" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39772728" sideWeight="0.48455805" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32714286" sideWeight="0.4792561" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970297" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32970297" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24714285" sideWeight="0.5135909" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26609442" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39772728" sideWeight="0.51544195" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20181043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09744409" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37" sideWeight="0.60944206" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29431817" sideWeight="0.55218315" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32970297" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -871,7 +909,8 @@
     <MESSAGE value="admin - service management" />
     <MESSAGE value="update process in readme" />
     <MESSAGE value="admin - reminder&#10;admin - administrator" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin - reminder&#10;admin - administrator" />
+    <MESSAGE value="upate for admin appt list ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="upate for admin appt list ui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -883,14 +922,12 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="55" />
+      <option name="time" value="62" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="form.pet.data" language="Python" />
-        <watch expression="form.appt_date.data" language="Python" />
-        <watch expression="form.appt_timeslot.data" language="Python" />
-        <watch expression="form.appt_service.data" language="Python" />
+        <watch expression="appt_list" language="Python" />
+        <watch expression="appt_list[0].get(&quot;id&quot;)" language="HTML" />
       </configuration>
     </watches-manager>
   </component>
@@ -1122,14 +1159,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/forms/_fields_macro.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="69" column="34" lean-forward="false" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/py3/lib/python3.6/site-packages/flask/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
@@ -1195,63 +1224,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/forms/appt_update.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="30" column="92" lean-forward="false" selection-start-line="30" selection-start-column="92" selection-end-line="30" selection-end-column="92" />
-          <folding>
-            <marker date="1526561608461" expanded="true" signature="123:3252" ph="..." />
-            <marker date="1526561608461" expanded="true" signature="176:3174" ph="..." />
-            <marker date="1526561608461" expanded="true" signature="311:3159" ph="..." />
-            <marker date="1526561608461" expanded="true" signature="350:2725" ph="..." />
-            <marker date="1526561608461" expanded="true" signature="1361:1578" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/subapps/home/routing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="422" column="0" lean-forward="false" selection-start-line="422" selection-start-column="0" selection-end-line="422" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="89" column="7" lean-forward="false" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/subapps/admin/routing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="240" column="35" lean-forward="false" selection-start-line="240" selection-start-column="35" selection-end-line="240" selection-end-column="35" />
-          <folding>
-            <element signature="e#24#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/forms/appt_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="31" column="54" lean-forward="false" selection-start-line="31" selection-start-column="54" selection-end-line="31" selection-end-column="54" />
-          <folding>
-            <marker date="1526561544207" expanded="true" signature="120:3167" ph="..." />
-            <marker date="1526561544207" expanded="true" signature="199:3076" ph="..." />
-            <marker date="1526561544207" expanded="true" signature="334:3061" ph="..." />
-            <marker date="1526561544207" expanded="true" signature="373:2659" ph="..." />
-            <marker date="1526561544207" expanded="true" signature="428:633" ph="..." />
-            <marker date="1526561544207" expanded="true" signature="1314:1508" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1284,19 +1256,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/forms/appt_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/subapps/home/routing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="422" column="0" lean-forward="false" selection-start-line="422" selection-start-column="0" selection-end-line="422" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/forms/appt_update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="30" column="92" lean-forward="false" selection-start-line="30" selection-start-column="92" selection-end-line="30" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/subapps/admin/routing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="264" column="33" lean-forward="false" selection-start-line="264" selection-start-column="29" selection-end-line="264" selection-end-column="33" />
+          <folding>
+            <element signature="e#24#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/subapps/home/templates/forms/_fields_macro.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-945">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/subapps/admin/templates/admin/_appt_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+        <state relative-caret-position="485">
+          <caret line="47" column="61" lean-forward="false" selection-start-line="47" selection-start-column="61" selection-end-line="47" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/subapps/admin/templates/admin/appt.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="59" column="14" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="59" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="285">
+          <caret line="19" column="81" lean-forward="true" selection-start-line="19" selection-start-column="81" selection-end-line="19" selection-end-column="81" />
+          <folding>
+            <element signature="e#697#721#0#HTML" expanded="true" />
+            <element signature="e#872#917#0#HTML" expanded="true" />
+            <element signature="e#1749#1773#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

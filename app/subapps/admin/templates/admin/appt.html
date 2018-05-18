@@ -1,4 +1,8 @@
-{% extends "admin/admin_base.html" %} {% block title %} {{ config.DEFAULT_APP_NAME }} - Appointment Admin {% endblock %}
+{% extends "admin/admin_base.html" %}
+{% import "admin/_appt_list.html" as li_generate %}
+
+{% block title %} {{ config.DEFAULT_APP_NAME }} - Appointment Admin {% endblock %}
+
 {% block content %}
     <div class="card ">
         <div class="card-header">
@@ -6,12 +10,12 @@
                 <div class="col-md-4">
                     <h4> My Appointment List </h4>
                 </div>
-
-
                 <div class="col-md-3">
                     <div class="input-group input-group-default">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
+                            <span class="input-group-text alert-heading" id="inputGroup-sizing-default"
+                                  style="font-size:16px; ">
+                                Date</span>
                         </div>
                         <input type="text" readonly class=" form-control" style="background-color: #2e6da4;color:#fff;"
                                id="id_date_filter" data-date-format="yyyy-mm-dd"
@@ -20,6 +24,10 @@
                     <script type="text/javascript">
                         $(function () {
                             $("#id_date_filter").datepicker({format: 'yyyy-mm-dd', autoclose: true});
+                            $('#id_date_filter').bind('change', function () {
+                                const pre_url = "{{ url_for("adminRoute.appt") }}";
+                                window.open(pre_url + "?date=" + $("#id_date_filter").val(), "_self");
+                            });
                         });
                     </script>
                 </div>
@@ -29,92 +37,13 @@
 
         </div>
         <ul class="list-group list-group-flush" id="appt_list" style="font-size: 14px;">
-
-
+            <li class="list-group-item">
+                {% for appt in appt_list %}
+                    {{ li_generate.appt_li(appt,date) }}
+                {% else %}
+                    No Appointment on {{ date }}.
+                {% endfor %}
+            </li>
         </ul>
     </div>
-
-    <li class="list-group-item">
-        <div class="row">
-            <div class="col-md-3">
-                <p><span class="badge badge-primary col-md-4">User Name</span> Name </p>
-                <p><span class="badge badge-primary col-md-4">Address</span> Address </p>
-            </div>
-            <div class="col-md-2">
-                <p><span class="badge badge-primary col-md-4">Pet</span> Address </p>
-                <p><span class="badge badge-primary col-md-4">Dob</span> Address </p>
-            </div>
-            <div class="col-md-2">
-                <p><span class="badge badge-primary col-md-4">Breed</span> Address </p>
-                <p><span class="badge badge-primary col-md-4">Gender</span> Address </p>
-            </div>
-            <div class="col-md-4">
-                <p><span class="badge badge-primary col-md-4">Time</span> Time </p>
-                <p><span class="badge badge-primary col-md-4">Service</span> Service </p>
-            </div>
-            <div class="col-md-1">
-                <div class="btn-group" role="group">
-                    <a class="btn btn-primary btn-sm disabled" href="#"> Finished </a>
-                </div>
-            </div>
-        </div>
-
-
-    </li>
-
-    <script type=text/javascript>
-        $(function () {
-            function appt_li(item) {
-                const url_pre = '{{ url_for("adminRoute.appt_finish") }}' + "?appt_id=" + item.id + "&date=" + $('#id_date_filter').val();
-                console.log(url_pre);
-                console.log(item.status);
-                let html = '<li class="list-group-item"><div class="row">'
-                    + '<div class="col-md-2">' + item.user + '<br>' + item.phone + '<br>' + item.pet
-                    + '</div><div class="col-md-2"> ' + item.address
-                    + '</div><div class="col-md-2"><span class="badge badge-success">' + item.time
-                    + '</span></div><div class="col-md-2">';
-                item.services.forEach(element => {
-                    html += ' <span class="badge badge-success">' + element + '</span>'
-                });
-                html += '</div>'
-                if (item.status == "Done") {
-                    html += '<div class="col-md-2"><span class="badge badge-success">' + item.status
-                        + '</span></div><div class="col-md-2"><div class="btn-group" role="group"><a class="btn btn-primary btn-sm disabled" href="#"> Finished </a>';
-                } else {
-                    html += '<div class="col-md-2"><span class="badge badge-warning">' + item.status
-                        + '</span></div><div class="col-md-2"><div class="btn-group" role="group"><a class="btn btn-primary btn-sm" href="' + url_pre
-                        + '"> Finish </a>'
-                }
-                return html;
-            }
-
-            function update_appt_list(data) {
-                $("#appt_list").children('li').remove();
-                if (data.list.length == 0) {
-                    $("#appt_list").append('<li class="list-group-item">No Appointment on ' + $('#id_date_filter').val() + ' .</li>');
-                    return true;
-                }
-                $.each(data.list, function (i, item) {
-                    const li_html = appt_li(item);
-                    console.log(li_html);
-                    $("#appt_list").append(li_html);
-                });
-                return true;
-            }
-
-            $('#id_date_filter').bind('change', function () {
-                $.getJSON('{{ url_for("adminRoute.appt_by_date") }}', {
-                    date: $('#id_date_filter').val()
-                }, update_appt_list);
-                return false;
-            });
-
-            $(function () {
-                $.getJSON('{{ url_for("adminRoute.appt_by_date") }}', {
-                    date: $('#id_date_filter').val()
-                }, update_appt_list);
-                return false;
-            });
-        });
-
-    </script> {% endblock %}
+{% endblock %}

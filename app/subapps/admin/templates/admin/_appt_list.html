@@ -1,24 +1,55 @@
-<li class="list-group-item">
-        <div class="row">
-            <div class="col-md-3">
-                <p><span class="badge badge-primary col-md-4">User Name</span> Name </p>
-                <p><span class="badge badge-primary col-md-4">Address</span> Address </p>
-            </div>
-            <div class="col-md-2">
-                <p><span class="badge badge-primary col-md-4">Pet</span> Address </p>
-                <p><span class="badge badge-primary col-md-4">Dob</span> Address </p>
-            </div>
-            <div class="col-md-2">
-                <p><span class="badge badge-primary col-md-4">Breed</span> Address </p>
-                <p><span class="badge badge-primary col-md-4">Gender</span> Address </p>
-            </div>
-            <div class="col-md-4">
-                <p><span class="badge badge-primary col-md-4">Time</span> Time </p>
-                <p><span class="badge badge-primary col-md-4">Service</span> Service </p>
-            </div>
-            <div class="col-md-1">
-                <div class="btn-group" role="group">
-                    <a class="btn btn-primary btn-sm disabled" href="#"> Finished </a>
-                </div>
+{% macro appt_li(appt,date) -%}
+    <div class="row">
+        <h5 class="col-md-2">
+            <span class="badge badge-Info">User Name</span><br>
+            {{ appt.get("user") }}
+        </h5>
+        <h6 class="col-md-2">
+            <span class="badge badge-Info">Phone</span><br>
+            {{ appt.get("phone") }}
+        </h6>
+        <h6 class="col-md-2">
+            <span class="badge badge-Info">Address</span><br>
+            {{ appt.get("address").get("street") }}
+        </h6>
+        <h6 class="col-md-2"><span class="badge badge-Info">Time</span><br>
+            {{ appt.get("time") }}
+        </h6>
+        <h6 class="col-md-3"><span class="badge badge-Info">Service</span><br>
+            {% for sappt_service in appt.get("services") %}
+                <span class="badge badge-success">{{ sappt_service }}</span>
+            {% endfor %}
+        </h6>
+    </div>
+    <div class="row">
+        <h6 class="col-md-2">
+            <span class="badge badge-Info">Pet Name</span><br>
+            {{ appt.get("pet").get("name") }}
+        </h6>
+        <h6 class="col-md-2">
+            <span class="badge badge-Info">DOB</span><br>
+            {{ appt.get("pet").get("dob") }}
+        </h6>
+        <h6 class="col-md-2">
+            <span class="badge badge-Info">Breed</span><br>
+            {{ appt.get("pet").get("breed") }}
+        </h6>
+        <h6 class="col-md-2">
+            <span class="badge badge-Info">Gender</span><br>
+            {{ appt.get("pet").get("gender") }}
+        </h6>
+
+        <div class="col-md-1">
+            <div class="btn-group" role="group">
+                {% if appt.get("status") == "Done" %}
+                     <a class="btn btn-dark btn-sm disabled"
+                   href="#"> Finished </a>
+                    {% else %}
+                     <a class="btn btn-outline-primary btn-lg"
+                   href="{{ url_for("adminRoute.appt_finish",date=date,appt_id=appt.get("id")) }}"> Mark Complete </a>
+                {% endif %}
+
             </div>
         </div>
+    </div>
+{%- endmacro %}

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime as dt
 from functools import wraps
-import hashlib
+import hashlib,json
 
 from flask import Blueprint, request, url_for, jsonify, redirect, current_app as app
 from flask import render_template, flash, render_template_string
@@ -41,8 +41,8 @@ def appt():
     date = request.args.get("date",today)
     session = Session()
     form = ApptForm()
-    appt_list = session.query(Appt).filter(Appt.appt_date == date).all()
-
+    # appt_list = session.query(Appt).filter(Appt.appt_date == date).all()
+    appt_list = appt_by_date(date)
     form.appt_service.choices = session.query(Service.id, Service.type).all()
     return render_template("admin/appt.html", form=form, appt_list=appt_list, current_page="appt",date=date)
 
@@ -217,35 +217,44 @@ def reminder():
     return render_template("admin/reminder.html",form=form,reminder_config=reminder_config,current_page="reminder")
 
 
-@adminRoute.route('/appt_by_date/', methods=['GET'])
+# @adminRoute.route('/appt_by_date/', methods=['GET'])
 @login_required
 @admin_only
-def appt_by_date():
+def appt_by_date(date):
     session = Session()
-    date = request.args.get("date")
+    # date = request.args.get("date")
     appt_list_all = session.query(Appt).filter(Appt.appt_date == date).order_by(Appt.id).all()
+    overall_dict = dict()
     appt_list = list()
     for appt in appt_list_all:
         appt_dict = dict()
         appt_dict["id"] = appt.id
         appt_dict["user"] = appt.owner.first_name
         appt_dict["phone"] = appt.owner.phone
-        appt_dict["address"] = appt.owner.address.to_html()
+
+        address = dict()
+        address["street"] = appt.owner.address.street
+        address["city"] = appt.owner.address.city
+        address["post_code"] = appt.owner.address.post_code
+
+        appt_dict["address"] = address
         appt_dict["time"] = appt.appt_timeslot.slot
         appt_dict["status"] = appt.status
+
         pet_info = dict()
         pet_info["name"] = appt.pet.name
         pet_info["breed"] = appt.pet.breed
         pet_info["gender"] = appt.pet.gender
-        pet_info["dob"] = appt.pet.dob
+        pet_info["dob"] = appt.pet.dob.__str__()
         appt_dict["pet"] = pet_info
+
         services = list()
         for s in appt.appt_service:
             services.append(s.service.type)
         appt_dict["services"] = services
         appt_list.append(appt_dict)
 
-    return jsonify(list=appt_list)
+    return appt_list
 
 
 @adminRoute.route('/appt_finish', methods=['GET'])
